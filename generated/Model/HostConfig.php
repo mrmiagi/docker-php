@@ -93,7 +93,7 @@ class HostConfig
      */
     protected $dns;
     /**
-     * @var string[]
+     * @var string[]|null
      */
     protected $dnsSearch;
     /**
@@ -121,7 +121,7 @@ class HostConfig
      */
     protected $networkMode;
     /**
-     * @var Device[]
+     * @var Device[]|null
      */
     protected $devices;
     /**
@@ -515,18 +515,18 @@ class HostConfig
         return $this;
     }
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getDnsSearch()
     {
         return $this->dnsSearch;
     }
     /**
-     * @param string[] $dnsSearch
+     * @param string[]|null $dnsSearch
      *
      * @return self
      */
-    public function setDnsSearch(array $dnsSearch = null)
+    public function setDnsSearch($dnsSearch = null)
     {
         $this->dnsSearch = $dnsSearch;
         return $this;
@@ -634,18 +634,18 @@ class HostConfig
         return $this;
     }
     /**
-     * @return Device[]
+     * @return Device[]|null
      */
     public function getDevices()
     {
         return $this->devices;
     }
     /**
-     * @param Device[] $devices
+     * @param Device[]|null $devices
      *
      * @return self
      */
-    public function setDevices(array $devices = null)
+    public function setDevices($devices = null)
     {
         $this->devices = $devices;
         return $this;

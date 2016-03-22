@@ -190,67 +190,74 @@ class HostConfigNormalizer extends SerializerAwareNormalizer implements Denormal
             $object->setDns($values_9);
         }
         if (property_exists($data, 'DnsSearch')) {
-            $values_10 = array();
-            foreach ($data->{'DnsSearch'} as $value_17) {
-                $values_10[] = $value_17;
+            $value_17 = $data->{'DnsSearch'};
+            if (is_array($data->{'DnsSearch'})) {
+                $values_10 = array();
+                foreach ($data->{'DnsSearch'} as $value_18) {
+                    $values_10[] = $value_18;
+                }
+                $value_17 = $values_10;
             }
-            $object->setDnsSearch($values_10);
+            if (is_null($data->{'DnsSearch'})) {
+                $value_17 = $data->{'DnsSearch'};
+            }
+            $object->setDnsSearch($value_17);
         }
         if (property_exists($data, 'ExtraHosts')) {
-            $value_18 = $data->{'ExtraHosts'};
+            $value_19 = $data->{'ExtraHosts'};
             if (is_array($data->{'ExtraHosts'})) {
                 $values_11 = array();
-                foreach ($data->{'ExtraHosts'} as $value_19) {
-                    $values_11[] = $value_19;
+                foreach ($data->{'ExtraHosts'} as $value_20) {
+                    $values_11[] = $value_20;
                 }
-                $value_18 = $values_11;
+                $value_19 = $values_11;
             }
             if (is_null($data->{'ExtraHosts'})) {
-                $value_18 = $data->{'ExtraHosts'};
+                $value_19 = $data->{'ExtraHosts'};
             }
-            $object->setExtraHosts($value_18);
+            $object->setExtraHosts($value_19);
         }
         if (property_exists($data, 'VolumesFrom')) {
-            $value_20 = $data->{'VolumesFrom'};
+            $value_21 = $data->{'VolumesFrom'};
             if (is_array($data->{'VolumesFrom'})) {
                 $values_12 = array();
-                foreach ($data->{'VolumesFrom'} as $value_21) {
-                    $values_12[] = $value_21;
+                foreach ($data->{'VolumesFrom'} as $value_22) {
+                    $values_12[] = $value_22;
                 }
-                $value_20 = $values_12;
+                $value_21 = $values_12;
             }
             if (is_null($data->{'VolumesFrom'})) {
-                $value_20 = $data->{'VolumesFrom'};
+                $value_21 = $data->{'VolumesFrom'};
             }
-            $object->setVolumesFrom($value_20);
+            $object->setVolumesFrom($value_21);
         }
         if (property_exists($data, 'CapAdd')) {
-            $value_22 = $data->{'CapAdd'};
+            $value_23 = $data->{'CapAdd'};
             if (is_array($data->{'CapAdd'})) {
                 $values_13 = array();
-                foreach ($data->{'CapAdd'} as $value_23) {
-                    $values_13[] = $value_23;
+                foreach ($data->{'CapAdd'} as $value_24) {
+                    $values_13[] = $value_24;
                 }
-                $value_22 = $values_13;
+                $value_23 = $values_13;
             }
             if (is_null($data->{'CapAdd'})) {
-                $value_22 = $data->{'CapAdd'};
+                $value_23 = $data->{'CapAdd'};
             }
-            $object->setCapAdd($value_22);
+            $object->setCapAdd($value_23);
         }
         if (property_exists($data, 'CapDrop')) {
-            $value_24 = $data->{'CapDrop'};
+            $value_25 = $data->{'CapDrop'};
             if (is_array($data->{'CapDrop'})) {
                 $values_14 = array();
-                foreach ($data->{'CapDrop'} as $value_25) {
-                    $values_14[] = $value_25;
+                foreach ($data->{'CapDrop'} as $value_26) {
+                    $values_14[] = $value_26;
                 }
-                $value_24 = $values_14;
+                $value_25 = $values_14;
             }
             if (is_null($data->{'CapDrop'})) {
-                $value_24 = $data->{'CapDrop'};
+                $value_25 = $data->{'CapDrop'};
             }
-            $object->setCapDrop($value_24);
+            $object->setCapDrop($value_25);
         }
         if (property_exists($data, 'RestartPolicy')) {
             $object->setRestartPolicy($this->serializer->deserialize($data->{'RestartPolicy'}, 'Docker\\API\\Model\\RestartPolicy', 'raw', $context));
@@ -259,39 +266,46 @@ class HostConfigNormalizer extends SerializerAwareNormalizer implements Denormal
             $object->setNetworkMode($data->{'NetworkMode'});
         }
         if (property_exists($data, 'Devices')) {
-            $values_15 = array();
-            foreach ($data->{'Devices'} as $value_26) {
-                $values_15[] = $this->serializer->deserialize($value_26, 'Docker\\API\\Model\\Device', 'raw', $context);
+            $value_27 = $data->{'Devices'};
+            if (is_array($data->{'Devices'})) {
+                $values_15 = array();
+                foreach ($data->{'Devices'} as $value_28) {
+                    $values_15[] = $this->serializer->deserialize($value_28, 'Docker\\API\\Model\\Device', 'raw', $context);
+                }
+                $value_27 = $values_15;
             }
-            $object->setDevices($values_15);
+            if (is_null($data->{'Devices'})) {
+                $value_27 = $data->{'Devices'};
+            }
+            $object->setDevices($value_27);
         }
         if (property_exists($data, 'Ulimits')) {
-            $value_27 = $data->{'Ulimits'};
+            $value_29 = $data->{'Ulimits'};
             if (is_array($data->{'Ulimits'})) {
                 $values_16 = array();
-                foreach ($data->{'Ulimits'} as $value_28) {
-                    $values_16[] = $this->serializer->deserialize($value_28, 'Docker\\API\\Model\\Ulimit', 'raw', $context);
+                foreach ($data->{'Ulimits'} as $value_30) {
+                    $values_16[] = $this->serializer->deserialize($value_30, 'Docker\\API\\Model\\Ulimit', 'raw', $context);
                 }
-                $value_27 = $values_16;
+                $value_29 = $values_16;
             }
             if (is_null($data->{'Ulimits'})) {
-                $value_27 = $data->{'Ulimits'};
+                $value_29 = $data->{'Ulimits'};
             }
-            $object->setUlimits($value_27);
+            $object->setUlimits($value_29);
         }
         if (property_exists($data, 'SecurityOpt')) {
-            $value_29 = $data->{'SecurityOpt'};
+            $value_31 = $data->{'SecurityOpt'};
             if (is_array($data->{'SecurityOpt'})) {
                 $values_17 = array();
-                foreach ($data->{'SecurityOpt'} as $value_30) {
-                    $values_17[] = $value_30;
+                foreach ($data->{'SecurityOpt'} as $value_32) {
+                    $values_17[] = $value_32;
                 }
-                $value_29 = $values_17;
+                $value_31 = $values_17;
             }
             if (is_null($data->{'SecurityOpt'})) {
-                $value_29 = $data->{'SecurityOpt'};
+                $value_31 = $data->{'SecurityOpt'};
             }
-            $object->setSecurityOpt($value_29);
+            $object->setSecurityOpt($value_31);
         }
         if (property_exists($data, 'LogConfig')) {
             $object->setLogConfig($this->serializer->deserialize($data->{'LogConfig'}, 'Docker\\API\\Model\\LogConfig', 'raw', $context));
@@ -445,98 +459,108 @@ class HostConfigNormalizer extends SerializerAwareNormalizer implements Denormal
             }
             $data->{'Dns'} = $values_9;
         }
-        if (null !== $object->getDnsSearch()) {
+        $value_17 = $object->getDnsSearch();
+        if (is_array($object->getDnsSearch())) {
             $values_10 = array();
-            foreach ($object->getDnsSearch() as $value_17) {
-                $values_10[] = $value_17;
+            foreach ($object->getDnsSearch() as $value_18) {
+                $values_10[] = $value_18;
             }
-            $data->{'DnsSearch'} = $values_10;
+            $value_17 = $values_10;
         }
-        $value_18 = $object->getExtraHosts();
+        if (is_null($object->getDnsSearch())) {
+            $value_17 = $object->getDnsSearch();
+        }
+        $data->{'DnsSearch'} = $value_17;
+        $value_19 = $object->getExtraHosts();
         if (is_array($object->getExtraHosts())) {
             $values_11 = array();
-            foreach ($object->getExtraHosts() as $value_19) {
-                $values_11[] = $value_19;
+            foreach ($object->getExtraHosts() as $value_20) {
+                $values_11[] = $value_20;
             }
-            $value_18 = $values_11;
+            $value_19 = $values_11;
         }
         if (is_null($object->getExtraHosts())) {
-            $value_18 = $object->getExtraHosts();
+            $value_19 = $object->getExtraHosts();
         }
-        $data->{'ExtraHosts'} = $value_18;
-        $value_20 = $object->getVolumesFrom();
+        $data->{'ExtraHosts'} = $value_19;
+        $value_21 = $object->getVolumesFrom();
         if (is_array($object->getVolumesFrom())) {
             $values_12 = array();
-            foreach ($object->getVolumesFrom() as $value_21) {
-                $values_12[] = $value_21;
+            foreach ($object->getVolumesFrom() as $value_22) {
+                $values_12[] = $value_22;
             }
-            $value_20 = $values_12;
+            $value_21 = $values_12;
         }
         if (is_null($object->getVolumesFrom())) {
-            $value_20 = $object->getVolumesFrom();
+            $value_21 = $object->getVolumesFrom();
         }
-        $data->{'VolumesFrom'} = $value_20;
-        $value_22 = $object->getCapAdd();
+        $data->{'VolumesFrom'} = $value_21;
+        $value_23 = $object->getCapAdd();
         if (is_array($object->getCapAdd())) {
             $values_13 = array();
-            foreach ($object->getCapAdd() as $value_23) {
-                $values_13[] = $value_23;
+            foreach ($object->getCapAdd() as $value_24) {
+                $values_13[] = $value_24;
             }
-            $value_22 = $values_13;
+            $value_23 = $values_13;
         }
         if (is_null($object->getCapAdd())) {
-            $value_22 = $object->getCapAdd();
+            $value_23 = $object->getCapAdd();
         }
-        $data->{'CapAdd'} = $value_22;
-        $value_24 = $object->getCapDrop();
+        $data->{'CapAdd'} = $value_23;
+        $value_25 = $object->getCapDrop();
         if (is_array($object->getCapDrop())) {
             $values_14 = array();
-            foreach ($object->getCapDrop() as $value_25) {
-                $values_14[] = $value_25;
+            foreach ($object->getCapDrop() as $value_26) {
+                $values_14[] = $value_26;
             }
-            $value_24 = $values_14;
+            $value_25 = $values_14;
         }
         if (is_null($object->getCapDrop())) {
-            $value_24 = $object->getCapDrop();
+            $value_25 = $object->getCapDrop();
         }
-        $data->{'CapDrop'} = $value_24;
+        $data->{'CapDrop'} = $value_25;
         if (null !== $object->getRestartPolicy()) {
             $data->{'RestartPolicy'} = $this->serializer->serialize($object->getRestartPolicy(), 'raw', $context);
         }
         if (null !== $object->getNetworkMode()) {
             $data->{'NetworkMode'} = $object->getNetworkMode();
         }
-        if (null !== $object->getDevices()) {
+        $value_27 = $object->getDevices();
+        if (is_array($object->getDevices())) {
             $values_15 = array();
-            foreach ($object->getDevices() as $value_26) {
-                $values_15[] = $this->serializer->serialize($value_26, 'raw', $context);
+            foreach ($object->getDevices() as $value_28) {
+                $values_15[] = $this->serializer->serialize($value_28, 'raw', $context);
             }
-            $data->{'Devices'} = $values_15;
+            $value_27 = $values_15;
         }
-        $value_27 = $object->getUlimits();
+        if (is_null($object->getDevices())) {
+            $value_27 = $object->getDevices();
+        }
+        $data->{'Devices'} = $value_27;
+        $value_29 = $object->getUlimits();
         if (is_array($object->getUlimits())) {
             $values_16 = array();
-            foreach ($object->getUlimits() as $value_28) {
-                $values_16[] = $this->serializer->serialize($value_28, 'raw', $context);
+            foreach ($object->getUlimits() as $value_30) {
+                $values_16[] = $this->serializer->serialize($value_30, 'raw', $context);
             }
-            $value_27 = $values_16;
+            $value_29 = $values_16;
         }
         if (is_null($object->getUlimits())) {
-            $value_27 = $object->getUlimits();
+            $value_29 = $object->getUlimits();
         }
-        $data->{'Ulimits'} = $value_27;
-        $value_29 = $object->getSecurityOpt();
+        $data->{'Ulimits'} = $value_29;
+        $value_31 = $object->getSecurityOpt();
         if (is_array($object->getSecurityOpt())) {
             $values_17 = array();
-            foreach ($object->getSecurityOpt() as $value_30) {
-                $values_17[] = $value_30;
+            foreach ($object->getSecurityOpt() as $value_32) {
+                $values_17[] = $value_32;
             }
-            $value_29 = $values_17;
+            $value_31 = $values_17;
         }
         if (is_null($object->getSecurityOpt())) {
-            $value_29 = $object->getSecurityOpt();
+            $value_31 = $object->getSecurityOpt();
         }
-        $data->{'SecurityOpt'} = $value_29;
+        $data->{'SecurityOpt'} = $value_31;
         if (null !== $object->getLogConfig()) {
             $data->{'LogConfig'} = $this->serializer->serialize($object->getLogConfig(), 'raw', $context);
         }

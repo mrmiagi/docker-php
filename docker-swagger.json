@@ -266,7 +266,7 @@
           }
         },
         "DnsSearch": {
-          "type": "array",
+          "type": ["array", "null"],
           "items": {
             "type": "string"
           }
@@ -302,7 +302,7 @@
           "type": "string"
         },
         "Devices": {
-          "type": "array",
+          "type": ["array", "null"],
           "items": {
             "$ref": "#/definitions/Device"
           }
@@ -504,7 +504,7 @@
           }
         },
         "Ports": {
-          "type": "object",
+          "type": ["object", "null"],
           "additionalProperties": {
             "type": ["array", "null"],
             "items": {
