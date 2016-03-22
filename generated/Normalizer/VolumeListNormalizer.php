@@ -6,7 +6,6 @@ use Joli\Jane\Reference\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
-
 class VolumeListNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -14,20 +13,16 @@ class VolumeListNormalizer extends SerializerAwareNormalizer implements Denormal
         if ($type !== 'Docker\\API\\Model\\VolumeList') {
             return false;
         }
-
         return true;
     }
-
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\VolumeList) {
             return true;
         }
-
         return false;
     }
-
-    public function denormalize($data, $class, $format = null, array $context = [])
+    public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (empty($data)) {
             return null;
@@ -40,27 +35,24 @@ class VolumeListNormalizer extends SerializerAwareNormalizer implements Denormal
             $context['rootSchema'] = $object;
         }
         if (property_exists($data, 'Volumes')) {
-            $values = [];
+            $values = array();
             foreach ($data->{'Volumes'} as $value) {
                 $values[] = $this->serializer->deserialize($value, 'Docker\\API\\Model\\Volume', 'raw', $context);
             }
             $object->setVolumes($values);
         }
-
         return $object;
     }
-
-    public function normalize($object, $format = null, array $context = [])
+    public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
         if (null !== $object->getVolumes()) {
-            $values = [];
+            $values = array();
             foreach ($object->getVolumes() as $value) {
                 $values[] = $this->serializer->serialize($value, 'raw', $context);
             }
             $data->{'Volumes'} = $values;
         }
-
         return $data;
     }
 }

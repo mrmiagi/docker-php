@@ -6,7 +6,6 @@ use Joli\Jane\Reference\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
-
 class RegistryNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -14,20 +13,16 @@ class RegistryNormalizer extends SerializerAwareNormalizer implements Denormaliz
         if ($type !== 'Docker\\API\\Model\\Registry') {
             return false;
         }
-
         return true;
     }
-
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\Registry) {
             return true;
         }
-
         return false;
     }
-
-    public function denormalize($data, $class, $format = null, array $context = [])
+    public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (empty($data)) {
             return null;
@@ -40,7 +35,7 @@ class RegistryNormalizer extends SerializerAwareNormalizer implements Denormaliz
             $context['rootSchema'] = $object;
         }
         if (property_exists($data, 'Mirrors')) {
-            $values = [];
+            $values = array();
             foreach ($data->{'Mirrors'} as $value) {
                 $values[] = $value;
             }
@@ -55,15 +50,13 @@ class RegistryNormalizer extends SerializerAwareNormalizer implements Denormaliz
         if (property_exists($data, 'Secure')) {
             $object->setSecure($data->{'Secure'});
         }
-
         return $object;
     }
-
-    public function normalize($object, $format = null, array $context = [])
+    public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
         if (null !== $object->getMirrors()) {
-            $values = [];
+            $values = array();
             foreach ($object->getMirrors() as $value) {
                 $values[] = $value;
             }
@@ -78,7 +71,6 @@ class RegistryNormalizer extends SerializerAwareNormalizer implements Denormaliz
         if (null !== $object->getSecure()) {
             $data->{'Secure'} = $object->getSecure();
         }
-
         return $data;
     }
 }

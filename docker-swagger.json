@@ -151,13 +151,13 @@
       "type": "object",
       "properties": {
         "Binds": {
-          "type": "array",
+          "type": ["array", "null"],
           "items": {
             "type": "string"
           }
         },
         "Links": {
-          "type": "array",
+          "type": ["array", "null"],
           "items": {
             "type": "string"
           }
@@ -192,31 +192,31 @@
           "type": "integer"
         },
         "BlkioWeightDevice": {
-          "type": "array",
+          "type": ["array", "null"],
           "items": {
             "$ref": "#/definitions/DeviceWeight"
           }
         },
         "BlkioDeviceReadBps": {
-          "type": "array",
+          "type": ["array", "null"],
           "items": {
             "$ref": "#/definitions/DeviceRate"
           }
         },
         "BlkioDeviceReadIOps": {
-          "type": "array",
+          "type": ["array", "null"],
           "items": {
             "$ref": "#/definitions/DeviceRate"
           }
         },
         "BlkioDeviceWriteBps": {
-          "type": "array",
+          "type": ["array", "null"],
           "items": {
             "$ref": "#/definitions/DeviceRate"
           }
         },
         "BlkioDeviceWriteIOps": {
-          "type": "array",
+          "type": ["array", "null"],
           "items": {
             "$ref": "#/definitions/DeviceRate"
           }
@@ -255,25 +255,25 @@
           }
         },
         "ExtraHosts": {
-          "type": "array",
+          "type": ["array", "null"],
           "items": {
             "type": "string"
           }
         },
         "VolumesFrom": {
-          "type": "array",
+          "type": ["array", "null"],
           "items": {
             "type": "string"
           }
         },
         "CapAdd": {
-          "type": "array",
+          "type": ["array", "null"],
           "items": {
             "type": "string"
           }
         },
         "CapDrop": {
-          "type": "array",
+          "type": ["array", "null"],
           "items": {
             "type": "string"
           }
@@ -291,13 +291,13 @@
           }
         },
         "Ulimits": {
-          "type": "array",
+          "type": ["array", "null"],
           "items": {
             "$ref": "#/definitions/Ulimit"
           }
         },
         "SecurityOpt": {
-          "type": "array",
+          "type": ["array", "null"],
           "items": {
             "type": "string"
           }
