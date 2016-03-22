@@ -12,7 +12,6 @@ class EndpointConfig
      * @var string
      */
     protected $iPv6Address;
-
     /**
      * @return string
      */
@@ -20,7 +19,6 @@ class EndpointConfig
     {
         return $this->iPv4Address;
     }
-
     /**
      * @param string $iPv4Address
      *
@@ -29,10 +27,8 @@ class EndpointConfig
     public function setIPv4Address($iPv4Address = null)
     {
         $this->iPv4Address = $iPv4Address;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -40,7 +36,6 @@ class EndpointConfig
     {
         return $this->iPv6Address;
     }
-
     /**
      * @param string $iPv6Address
      *
@@ -49,7 +44,6 @@ class EndpointConfig
     public function setIPv6Address($iPv6Address = null)
     {
         $this->iPv6Address = $iPv6Address;
-
         return $this;
     }
 }

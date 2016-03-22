@@ -6,7 +6,6 @@ use Joli\Jane\Reference\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
-
 class ExecConfigNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -14,20 +13,16 @@ class ExecConfigNormalizer extends SerializerAwareNormalizer implements Denormal
         if ($type !== 'Docker\\API\\Model\\ExecConfig') {
             return false;
         }
-
         return true;
     }
-
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\ExecConfig) {
             return true;
         }
-
         return false;
     }
-
-    public function denormalize($data, $class, $format = null, array $context = [])
+    public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (empty($data)) {
             return null;
@@ -52,17 +47,15 @@ class ExecConfigNormalizer extends SerializerAwareNormalizer implements Denormal
             $object->setTty($data->{'Tty'});
         }
         if (property_exists($data, 'Cmd')) {
-            $values = [];
+            $values = array();
             foreach ($data->{'Cmd'} as $value) {
                 $values[] = $value;
             }
             $object->setCmd($values);
         }
-
         return $object;
     }
-
-    public function normalize($object, $format = null, array $context = [])
+    public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
         if (null !== $object->getAttachStdin()) {
@@ -78,13 +71,12 @@ class ExecConfigNormalizer extends SerializerAwareNormalizer implements Denormal
             $data->{'Tty'} = $object->getTty();
         }
         if (null !== $object->getCmd()) {
-            $values = [];
+            $values = array();
             foreach ($object->getCmd() as $value) {
                 $values[] = $value;
             }
             $data->{'Cmd'} = $values;
         }
-
         return $data;
     }
 }

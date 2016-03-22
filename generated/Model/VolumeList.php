@@ -8,7 +8,6 @@ class VolumeList
      * @var Volume[]
      */
     protected $volumes;
-
     /**
      * @return Volume[]
      */
@@ -16,7 +15,6 @@ class VolumeList
     {
         return $this->volumes;
     }
-
     /**
      * @param Volume[] $volumes
      *
@@ -25,7 +23,6 @@ class VolumeList
     public function setVolumes(array $volumes = null)
     {
         $this->volumes = $volumes;
-
         return $this;
     }
 }

@@ -6,7 +6,6 @@ use Joli\Jane\Reference\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
-
 class IPAMNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -14,20 +13,16 @@ class IPAMNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         if ($type !== 'Docker\\API\\Model\\IPAM') {
             return false;
         }
-
         return true;
     }
-
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\IPAM) {
             return true;
         }
-
         return false;
     }
-
-    public function denormalize($data, $class, $format = null, array $context = [])
+    public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (empty($data)) {
             return null;
@@ -43,31 +38,29 @@ class IPAMNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
             $object->setDriver($data->{'Driver'});
         }
         if (property_exists($data, 'Config')) {
-            $values = [];
+            $values = array();
             foreach ($data->{'Config'} as $value) {
                 $values[] = $this->serializer->deserialize($value, 'Docker\\API\\Model\\IPAMConfig', 'raw', $context);
             }
             $object->setConfig($values);
         }
         if (property_exists($data, 'Options')) {
-            $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_1 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data->{'Options'} as $key => $value_1) {
                 $values_1[$key] = $value_1;
             }
             $object->setOptions($values_1);
         }
-
         return $object;
     }
-
-    public function normalize($object, $format = null, array $context = [])
+    public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
         if (null !== $object->getDriver()) {
             $data->{'Driver'} = $object->getDriver();
         }
         if (null !== $object->getConfig()) {
-            $values = [];
+            $values = array();
             foreach ($object->getConfig() as $value) {
                 $values[] = $this->serializer->serialize($value, 'raw', $context);
             }
@@ -80,7 +73,6 @@ class IPAMNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
             }
             $data->{'Options'} = $values_1;
         }
-
         return $data;
     }
 }

@@ -6,7 +6,6 @@ use Joli\Jane\Reference\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
-
 class ContainerNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -14,20 +13,16 @@ class ContainerNormalizer extends SerializerAwareNormalizer implements Denormali
         if ($type !== 'Docker\\API\\Model\\Container') {
             return false;
         }
-
         return true;
     }
-
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\Container) {
             return true;
         }
-
         return false;
     }
-
-    public function denormalize($data, $class, $format = null, array $context = [])
+    public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (empty($data)) {
             return null;
@@ -43,7 +38,7 @@ class ContainerNormalizer extends SerializerAwareNormalizer implements Denormali
             $object->setAppArmorProfile($data->{'AppArmorProfile'});
         }
         if (property_exists($data, 'Args')) {
-            $values = [];
+            $values = array();
             foreach ($data->{'Args'} as $value) {
                 $values[] = $value;
             }
@@ -107,24 +102,22 @@ class ContainerNormalizer extends SerializerAwareNormalizer implements Denormali
             $object->setState($this->serializer->deserialize($data->{'State'}, 'Docker\\API\\Model\\ContainerState', 'raw', $context));
         }
         if (property_exists($data, 'Mounts')) {
-            $values_1 = [];
+            $values_1 = array();
             foreach ($data->{'Mounts'} as $value_1) {
                 $values_1[] = $this->serializer->deserialize($value_1, 'Docker\\API\\Model\\Mount', 'raw', $context);
             }
             $object->setMounts($values_1);
         }
-
         return $object;
     }
-
-    public function normalize($object, $format = null, array $context = [])
+    public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
         if (null !== $object->getAppArmorProfile()) {
             $data->{'AppArmorProfile'} = $object->getAppArmorProfile();
         }
         if (null !== $object->getArgs()) {
-            $values = [];
+            $values = array();
             foreach ($object->getArgs() as $value) {
                 $values[] = $value;
             }
@@ -188,13 +181,12 @@ class ContainerNormalizer extends SerializerAwareNormalizer implements Denormali
             $data->{'State'} = $this->serializer->serialize($object->getState(), 'raw', $context);
         }
         if (null !== $object->getMounts()) {
-            $values_1 = [];
+            $values_1 = array();
             foreach ($object->getMounts() as $value_1) {
                 $values_1[] = $this->serializer->serialize($value_1, 'raw', $context);
             }
             $data->{'Mounts'} = $values_1;
         }
-
         return $data;
     }
 }

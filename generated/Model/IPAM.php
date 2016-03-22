@@ -16,7 +16,6 @@ class IPAM
      * @var string[]
      */
     protected $options;
-
     /**
      * @return string
      */
@@ -24,7 +23,6 @@ class IPAM
     {
         return $this->driver;
     }
-
     /**
      * @param string $driver
      *
@@ -33,10 +31,8 @@ class IPAM
     public function setDriver($driver = null)
     {
         $this->driver = $driver;
-
         return $this;
     }
-
     /**
      * @return IPAMConfig[]
      */
@@ -44,7 +40,6 @@ class IPAM
     {
         return $this->config;
     }
-
     /**
      * @param IPAMConfig[] $config
      *
@@ -53,10 +48,8 @@ class IPAM
     public function setConfig(array $config = null)
     {
         $this->config = $config;
-
         return $this;
     }
-
     /**
      * @return string[]
      */
@@ -64,7 +57,6 @@ class IPAM
     {
         return $this->options;
     }
-
     /**
      * @param string[] $options
      *
@@ -73,7 +65,6 @@ class IPAM
     public function setOptions(\ArrayObject $options = null)
     {
         $this->options = $options;
-
         return $this;
     }
 }

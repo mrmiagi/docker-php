@@ -6,7 +6,6 @@ use Joli\Jane\Reference\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
-
 class RegistryConfigNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -14,20 +13,16 @@ class RegistryConfigNormalizer extends SerializerAwareNormalizer implements Deno
         if ($type !== 'Docker\\API\\Model\\RegistryConfig') {
             return false;
         }
-
         return true;
     }
-
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\RegistryConfig) {
             return true;
         }
-
         return false;
     }
-
-    public function denormalize($data, $class, $format = null, array $context = [])
+    public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (empty($data)) {
             return null;
@@ -40,24 +35,22 @@ class RegistryConfigNormalizer extends SerializerAwareNormalizer implements Deno
             $context['rootSchema'] = $object;
         }
         if (property_exists($data, 'IndexConfigs')) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data->{'IndexConfigs'} as $key => $value) {
                 $values[$key] = $this->serializer->deserialize($value, 'Docker\\API\\Model\\Registry', 'raw', $context);
             }
             $object->setIndexConfigs($values);
         }
         if (property_exists($data, 'InsecureRegistryCIDRs')) {
-            $values_1 = [];
+            $values_1 = array();
             foreach ($data->{'InsecureRegistryCIDRs'} as $value_1) {
                 $values_1[] = $value_1;
             }
             $object->setInsecureRegistryCIDRs($values_1);
         }
-
         return $object;
     }
-
-    public function normalize($object, $format = null, array $context = [])
+    public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
         if (null !== $object->getIndexConfigs()) {
@@ -68,13 +61,12 @@ class RegistryConfigNormalizer extends SerializerAwareNormalizer implements Deno
             $data->{'IndexConfigs'} = $values;
         }
         if (null !== $object->getInsecureRegistryCIDRs()) {
-            $values_1 = [];
+            $values_1 = array();
             foreach ($object->getInsecureRegistryCIDRs() as $value_1) {
                 $values_1[] = $value_1;
             }
             $data->{'InsecureRegistryCIDRs'} = $values_1;
         }
-
         return $data;
     }
 }
