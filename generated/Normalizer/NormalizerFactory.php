@@ -19,6 +19,7 @@ class NormalizerFactory
         $normalizers[] = new DeviceNormalizer();
         $normalizers[] = new RestartPolicyNormalizer();
         $normalizers[] = new PortBindingNormalizer();
+        $normalizers[] = new NodeConfigNormalizer();
         $normalizers[] = new HostConfigNormalizer();
         $normalizers[] = new DeviceWeightNormalizer();
         $normalizers[] = new DeviceRateNormalizer();

@@ -148,7 +148,7 @@
       }
     },
     "NodeConfig" : {
-      "type": ["object", "null"],
+      "type": "object",
       "properties" : {
         "Id" : {
           "type" : "string"

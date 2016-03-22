@@ -109,14 +109,7 @@ class ContainerNormalizer extends SerializerAwareNormalizer implements Denormali
             $object->setMounts($values_1);
         }
         if (property_exists($data, 'Node')) {
-            $value_2 = $data->{'Node'};
-            if (is_object($data->{'Node'})) {
-                $value_2 = $this->serializer->deserialize($data->{'Node'}, 'Docker\\API\\Model\\Node', 'raw', $context);
-            }
-            if (is_null($data->{'Node'})) {
-                $value_2 = $data->{'Node'};
-            }
-            $object->setNode($value_2);
+            $object->setNode($this->serializer->deserialize($data->{'Node'}, 'Docker\\API\\Model\\NodeConfig', 'raw', $context));
         }
         return $object;
     }
@@ -197,14 +190,9 @@ class ContainerNormalizer extends SerializerAwareNormalizer implements Denormali
             }
             $data->{'Mounts'} = $values_1;
         }
-        $value_2 = $object->getNode();
-        if (is_object($object->getNode())) {
-            $value_2 = $this->serializer->serialize($object->getNode(), 'raw', $context);
+        if (null !== $object->getNode()) {
+            $data->{'Node'} = $this->serializer->serialize($object->getNode(), 'raw', $context);
         }
-        if (is_null($object->getNode())) {
-            $value_2 = $object->getNode();
-        }
-        $data->{'Node'} = $value_2;
         return $data;
     }
 }
