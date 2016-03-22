@@ -93,6 +93,10 @@ class Container
      */
     protected $mounts;
     /**
+     * @var NodeConfig|null
+     */
+    protected $nodeConfig;
+    /**
      * @return string
      */
     public function getAppArmorProfile()
@@ -464,6 +468,23 @@ class Container
     public function setMounts(array $mounts = null)
     {
         $this->mounts = $mounts;
+        return $this;
+    }
+    /**
+     * @return NodeConfig|null
+     */
+    public function getNodeConfig()
+    {
+        return $this->nodeConfig;
+    }
+    /**
+     * @param NodeConfig|null $nodeConfig
+     *
+     * @return self
+     */
+    public function setNodeConfig(NodeConfig $nodeConfig = null)
+    {
+        $this->nodeConfig = $nodeConfig;
         return $this;
     }
 }

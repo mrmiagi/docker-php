@@ -147,6 +147,23 @@
         }
       }
     },
+    "NodeConfig" : {
+      "type": ["object", "null"],
+      "properties" : {
+        "Id" : {
+          "type" : "string"
+        },
+        "Ip" : {
+          "type" : "string"
+        },
+        "Addr" : {
+          "type" : "string"
+        },
+        "Name" : {
+          "type" : "string"
+        }
+      }
+    },
     "HostConfig": {
       "type": "object",
       "properties": {
@@ -635,6 +652,9 @@
           "items": {
             "$ref": "#/definitions/mount"
           }
+        },
+        "NodeConfig": {
+          "$ref" : "#/definitions/NodeConfig"
         }
       }
     },
