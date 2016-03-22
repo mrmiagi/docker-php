@@ -93,9 +93,9 @@ class Container
      */
     protected $mounts;
     /**
-     * @var NodeConfig|null
+     * @var Node|null
      */
-    protected $nodeConfig;
+    protected $node;
     /**
      * @return string
      */
@@ -471,20 +471,20 @@ class Container
         return $this;
     }
     /**
-     * @return NodeConfig|null
+     * @return Node|null
      */
-    public function getNodeConfig()
+    public function getNode()
     {
-        return $this->nodeConfig;
+        return $this->node;
     }
     /**
-     * @param NodeConfig|null $nodeConfig
+     * @param Node|null $node
      *
      * @return self
      */
-    public function setNodeConfig(NodeConfig $nodeConfig = null)
+    public function setNode(Node $node = null)
     {
-        $this->nodeConfig = $nodeConfig;
+        $this->node = $node;
         return $this;
     }
 }

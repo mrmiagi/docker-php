@@ -653,7 +653,7 @@
             "$ref": "#/definitions/mount"
           }
         },
-        "NodeConfig": {
+        "Node": {
           "$ref" : "#/definitions/NodeConfig"
         }
       }
