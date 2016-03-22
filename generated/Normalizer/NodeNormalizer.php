@@ -6,18 +6,18 @@ use Joli\Jane\Reference\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
-class NodeConfigNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
+class NodeNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Docker\\API\\Model\\NodeConfig') {
+        if ($type !== 'Docker\\API\\Model\\Node') {
             return false;
         }
         return true;
     }
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Docker\API\Model\NodeConfig) {
+        if ($data instanceof \Docker\API\Model\Node) {
             return true;
         }
         return false;
@@ -30,7 +30,7 @@ class NodeConfigNormalizer extends SerializerAwareNormalizer implements Denormal
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['rootSchema'] ?: null);
         }
-        $object = new \Docker\API\Model\NodeConfig();
+        $object = new \Docker\API\Model\Node();
         if (!isset($context['rootSchema'])) {
             $context['rootSchema'] = $object;
         }

@@ -2,7 +2,7 @@
 
 namespace Docker\API\Model;
 
-class NodeConfig
+class Node
 {
     /**
      * @var string

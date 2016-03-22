@@ -147,7 +147,7 @@
         }
       }
     },
-    "NodeConfig" : {
+    "Node" : {
       "type": "object",
       "properties" : {
         "Id" : {
@@ -654,7 +654,7 @@
           }
         },
         "Node": {
-          "$ref" : "#/definitions/NodeConfig"
+          "$ref" : "#/definitions/Node"
         }
       }
     },

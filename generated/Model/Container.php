@@ -93,7 +93,7 @@ class Container
      */
     protected $mounts;
     /**
-     * @var NodeConfig
+     * @var Node
      */
     protected $node;
     /**
@@ -471,18 +471,18 @@ class Container
         return $this;
     }
     /**
-     * @return NodeConfig
+     * @return Node
      */
     public function getNode()
     {
         return $this->node;
     }
     /**
-     * @param NodeConfig $node
+     * @param Node $node
      *
      * @return self
      */
-    public function setNode(NodeConfig $node = null)
+    public function setNode(Node $node = null)
     {
         $this->node = $node;
         return $this;
