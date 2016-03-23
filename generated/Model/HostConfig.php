@@ -73,7 +73,7 @@ class HostConfig
      */
     protected $oomKillDisable;
     /**
-     * @var PortBinding[]
+     * @var PortBinding[]|null
      */
     protected $portBindings;
     /**
@@ -430,18 +430,18 @@ class HostConfig
         return $this;
     }
     /**
-     * @return PortBinding[]
+     * @return PortBinding[]|null
      */
     public function getPortBindings()
     {
         return $this->portBindings;
     }
     /**
-     * @param PortBinding[] $portBindings
+     * @param PortBinding[]|null $portBindings
      *
      * @return self
      */
-    public function setPortBindings(\ArrayObject $portBindings = null)
+    public function setPortBindings($portBindings = null)
     {
         $this->portBindings = $portBindings;
         return $this;
