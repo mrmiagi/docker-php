@@ -22,7 +22,7 @@ class NetworkConfigNormalizer extends SerializerAwareNormalizer implements Denor
         }
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = array())
+    public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (empty($data)) {
             return null;
@@ -53,7 +53,7 @@ class NetworkConfigNormalizer extends SerializerAwareNormalizer implements Denor
             $object->setPortMapping($data->{'PortMapping'});
         }
         if (property_exists($data, 'Networks')) {
-            $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data->{'Networks'} as $key => $value) {
                 $values[$key] = $this->serializer->deserialize($value, 'Docker\\API\\Model\\ContainerNetwork', 'raw', $context);
             }
@@ -62,11 +62,11 @@ class NetworkConfigNormalizer extends SerializerAwareNormalizer implements Denor
         if (property_exists($data, 'Ports')) {
             $value_1 = $data->{'Ports'};
             if (is_object($data->{'Ports'})) {
-                $values_1 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+                $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
                 foreach ($data->{'Ports'} as $key_1 => $value_2) {
                     $value_3 = $value_2;
                     if (is_array($value_2)) {
-                        $values_2 = array();
+                        $values_2 = [];
                         foreach ($value_2 as $value_4) {
                             $values_2[] = $this->serializer->deserialize($value_4, 'Docker\\API\\Model\\PortBinding', 'raw', $context);
                         }
@@ -86,7 +86,7 @@ class NetworkConfigNormalizer extends SerializerAwareNormalizer implements Denor
         }
         return $object;
     }
-    public function normalize($object, $format = null, array $context = array())
+    public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
         if (null !== $object->getBridge()) {
@@ -120,7 +120,7 @@ class NetworkConfigNormalizer extends SerializerAwareNormalizer implements Denor
             foreach ($object->getPorts() as $key_1 => $value_2) {
                 $value_3 = $value_2;
                 if (is_array($value_2)) {
-                    $values_2 = array();
+                    $values_2 = [];
                     foreach ($value_2 as $value_4) {
                         $values_2[] = $this->serializer->serialize($value_4, 'raw', $context);
                     }

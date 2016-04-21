@@ -22,7 +22,7 @@ class VolumeListNormalizer extends SerializerAwareNormalizer implements Denormal
         }
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = array())
+    public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (empty($data)) {
             return null;
@@ -35,24 +35,36 @@ class VolumeListNormalizer extends SerializerAwareNormalizer implements Denormal
             $context['rootSchema'] = $object;
         }
         if (property_exists($data, 'Volumes')) {
-            $values = array();
-            foreach ($data->{'Volumes'} as $value) {
-                $values[] = $this->serializer->deserialize($value, 'Docker\\API\\Model\\Volume', 'raw', $context);
+            $value = $data->{'Volumes'};
+            if (is_array($data->{'Volumes'})) {
+                $values = [];
+                foreach ($data->{'Volumes'} as $value_1) {
+                    $values[] = $this->serializer->deserialize($value_1, 'Docker\\API\\Model\\Volume', 'raw', $context);
+                }
+                $value = $values;
             }
-            $object->setVolumes($values);
+            if (is_null($data->{'Volumes'})) {
+                $value = $data->{'Volumes'};
+            }
+            $object->setVolumes($value);
         }
         return $object;
     }
-    public function normalize($object, $format = null, array $context = array())
+    public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
-        if (null !== $object->getVolumes()) {
-            $values = array();
-            foreach ($object->getVolumes() as $value) {
-                $values[] = $this->serializer->serialize($value, 'raw', $context);
+        $value = $object->getVolumes();
+        if (is_array($object->getVolumes())) {
+            $values = [];
+            foreach ($object->getVolumes() as $value_1) {
+                $values[] = $this->serializer->serialize($value_1, 'raw', $context);
             }
-            $data->{'Volumes'} = $values;
+            $value = $values;
         }
+        if (is_null($object->getVolumes())) {
+            $value = $object->getVolumes();
+        }
+        $data->{'Volumes'} = $value;
         return $data;
     }
 }

@@ -17,7 +17,7 @@ class ImageHistoryItem
      */
     protected $createdBy;
     /**
-     * @var string[]
+     * @var string[]|null
      */
     protected $tags;
     /**
@@ -80,18 +80,18 @@ class ImageHistoryItem
         return $this;
     }
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getTags()
     {
         return $this->tags;
     }
     /**
-     * @param string[] $tags
+     * @param string[]|null $tags
      *
      * @return self
      */
-    public function setTags(array $tags = null)
+    public function setTags($tags = null)
     {
         $this->tags = $tags;
         return $this;

@@ -9,7 +9,7 @@ class Container
      */
     protected $appArmorProfile;
     /**
-     * @var string[]
+     * @var string[]|null
      */
     protected $args;
     /**
@@ -89,7 +89,7 @@ class Container
      */
     protected $state;
     /**
-     * @var Mount[]
+     * @var Mount[]|null
      */
     protected $mounts;
     /**
@@ -114,18 +114,18 @@ class Container
         return $this;
     }
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getArgs()
     {
         return $this->args;
     }
     /**
-     * @param string[] $args
+     * @param string[]|null $args
      *
      * @return self
      */
-    public function setArgs(array $args = null)
+    public function setArgs($args = null)
     {
         $this->args = $args;
         return $this;
@@ -454,18 +454,18 @@ class Container
         return $this;
     }
     /**
-     * @return Mount[]
+     * @return Mount[]|null
      */
     public function getMounts()
     {
         return $this->mounts;
     }
     /**
-     * @param Mount[] $mounts
+     * @param Mount[]|null $mounts
      *
      * @return self
      */
-    public function setMounts(array $mounts = null)
+    public function setMounts($mounts = null)
     {
         $this->mounts = $mounts;
         return $this;

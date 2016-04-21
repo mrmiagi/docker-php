@@ -21,7 +21,7 @@ class ExecConfig
      */
     protected $tty;
     /**
-     * @var string[]
+     * @var string[]|null
      */
     protected $cmd;
     /**
@@ -93,18 +93,18 @@ class ExecConfig
         return $this;
     }
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getCmd()
     {
         return $this->cmd;
     }
     /**
-     * @param string[] $cmd
+     * @param string[]|null $cmd
      *
      * @return self
      */
-    public function setCmd(array $cmd = null)
+    public function setCmd($cmd = null)
     {
         $this->cmd = $cmd;
         return $this;

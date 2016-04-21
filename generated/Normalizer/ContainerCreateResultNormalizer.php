@@ -22,7 +22,7 @@ class ContainerCreateResultNormalizer extends SerializerAwareNormalizer implemen
         }
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = array())
+    public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (empty($data)) {
             return null;
@@ -40,7 +40,7 @@ class ContainerCreateResultNormalizer extends SerializerAwareNormalizer implemen
         if (property_exists($data, 'Warnings')) {
             $value = $data->{'Warnings'};
             if (is_array($data->{'Warnings'})) {
-                $values = array();
+                $values = [];
                 foreach ($data->{'Warnings'} as $value_1) {
                     $values[] = $value_1;
                 }
@@ -53,7 +53,7 @@ class ContainerCreateResultNormalizer extends SerializerAwareNormalizer implemen
         }
         return $object;
     }
-    public function normalize($object, $format = null, array $context = array())
+    public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
         if (null !== $object->getId()) {
@@ -61,7 +61,7 @@ class ContainerCreateResultNormalizer extends SerializerAwareNormalizer implemen
         }
         $value = $object->getWarnings();
         if (is_array($object->getWarnings())) {
-            $values = array();
+            $values = [];
             foreach ($object->getWarnings() as $value_1) {
                 $values[] = $value_1;
             }

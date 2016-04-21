@@ -22,7 +22,7 @@ class ProgressDetailNormalizer extends SerializerAwareNormalizer implements Deno
         }
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = array())
+    public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (empty($data)) {
             return null;
@@ -42,7 +42,7 @@ class ProgressDetailNormalizer extends SerializerAwareNormalizer implements Deno
         }
         return $object;
     }
-    public function normalize($object, $format = null, array $context = array())
+    public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
         if (null !== $object->getCode()) {

@@ -9,7 +9,7 @@ class RegistryConfig
      */
     protected $indexConfigs;
     /**
-     * @var string[]
+     * @var string[]|null
      */
     protected $insecureRegistryCIDRs;
     /**
@@ -30,18 +30,18 @@ class RegistryConfig
         return $this;
     }
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getInsecureRegistryCIDRs()
     {
         return $this->insecureRegistryCIDRs;
     }
     /**
-     * @param string[] $insecureRegistryCIDRs
+     * @param string[]|null $insecureRegistryCIDRs
      *
      * @return self
      */
-    public function setInsecureRegistryCIDRs(array $insecureRegistryCIDRs = null)
+    public function setInsecureRegistryCIDRs($insecureRegistryCIDRs = null)
     {
         $this->insecureRegistryCIDRs = $insecureRegistryCIDRs;
         return $this;

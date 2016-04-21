@@ -22,7 +22,7 @@ class ContainerNormalizer extends SerializerAwareNormalizer implements Denormali
         }
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = array())
+    public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (empty($data)) {
             return null;
@@ -38,11 +38,18 @@ class ContainerNormalizer extends SerializerAwareNormalizer implements Denormali
             $object->setAppArmorProfile($data->{'AppArmorProfile'});
         }
         if (property_exists($data, 'Args')) {
-            $values = array();
-            foreach ($data->{'Args'} as $value) {
-                $values[] = $value;
+            $value = $data->{'Args'};
+            if (is_array($data->{'Args'})) {
+                $values = [];
+                foreach ($data->{'Args'} as $value_1) {
+                    $values[] = $value_1;
+                }
+                $value = $values;
             }
-            $object->setArgs($values);
+            if (is_null($data->{'Args'})) {
+                $value = $data->{'Args'};
+            }
+            $object->setArgs($value);
         }
         if (property_exists($data, 'Config')) {
             $object->setConfig($this->serializer->deserialize($data->{'Config'}, 'Docker\\API\\Model\\ContainerConfig', 'raw', $context));
@@ -102,30 +109,42 @@ class ContainerNormalizer extends SerializerAwareNormalizer implements Denormali
             $object->setState($this->serializer->deserialize($data->{'State'}, 'Docker\\API\\Model\\ContainerState', 'raw', $context));
         }
         if (property_exists($data, 'Mounts')) {
-            $values_1 = array();
-            foreach ($data->{'Mounts'} as $value_1) {
-                $values_1[] = $this->serializer->deserialize($value_1, 'Docker\\API\\Model\\Mount', 'raw', $context);
+            $value_2 = $data->{'Mounts'};
+            if (is_array($data->{'Mounts'})) {
+                $values_1 = [];
+                foreach ($data->{'Mounts'} as $value_3) {
+                    $values_1[] = $this->serializer->deserialize($value_3, 'Docker\\API\\Model\\Mount', 'raw', $context);
+                }
+                $value_2 = $values_1;
             }
-            $object->setMounts($values_1);
+            if (is_null($data->{'Mounts'})) {
+                $value_2 = $data->{'Mounts'};
+            }
+            $object->setMounts($value_2);
         }
         if (property_exists($data, 'Node')) {
             $object->setNode($this->serializer->deserialize($data->{'Node'}, 'Docker\\API\\Model\\Node', 'raw', $context));
         }
         return $object;
     }
-    public function normalize($object, $format = null, array $context = array())
+    public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
         if (null !== $object->getAppArmorProfile()) {
             $data->{'AppArmorProfile'} = $object->getAppArmorProfile();
         }
-        if (null !== $object->getArgs()) {
-            $values = array();
-            foreach ($object->getArgs() as $value) {
-                $values[] = $value;
+        $value = $object->getArgs();
+        if (is_array($object->getArgs())) {
+            $values = [];
+            foreach ($object->getArgs() as $value_1) {
+                $values[] = $value_1;
             }
-            $data->{'Args'} = $values;
+            $value = $values;
         }
+        if (is_null($object->getArgs())) {
+            $value = $object->getArgs();
+        }
+        $data->{'Args'} = $value;
         if (null !== $object->getConfig()) {
             $data->{'Config'} = $this->serializer->serialize($object->getConfig(), 'raw', $context);
         }
@@ -183,13 +202,18 @@ class ContainerNormalizer extends SerializerAwareNormalizer implements Denormali
         if (null !== $object->getState()) {
             $data->{'State'} = $this->serializer->serialize($object->getState(), 'raw', $context);
         }
-        if (null !== $object->getMounts()) {
-            $values_1 = array();
-            foreach ($object->getMounts() as $value_1) {
-                $values_1[] = $this->serializer->serialize($value_1, 'raw', $context);
+        $value_2 = $object->getMounts();
+        if (is_array($object->getMounts())) {
+            $values_1 = [];
+            foreach ($object->getMounts() as $value_3) {
+                $values_1[] = $this->serializer->serialize($value_3, 'raw', $context);
             }
-            $data->{'Mounts'} = $values_1;
+            $value_2 = $values_1;
         }
+        if (is_null($object->getMounts())) {
+            $value_2 = $object->getMounts();
+        }
+        $data->{'Mounts'} = $value_2;
         if (null !== $object->getNode()) {
             $data->{'Node'} = $this->serializer->serialize($object->getNode(), 'raw', $context);
         }

@@ -49,11 +49,11 @@ class SystemInformation
      */
     protected $driver;
     /**
-     * @var string[][]
+     * @var string[][]|null[]|null
      */
     protected $driverStatus;
     /**
-     * @var string[][]
+     * @var string[][]|null[]|null
      */
     protected $systemStatus;
     /**
@@ -101,7 +101,7 @@ class SystemInformation
      */
     protected $kernelVersion;
     /**
-     * @var string[]
+     * @var string[]|null
      */
     protected $labels;
     /**
@@ -352,35 +352,35 @@ class SystemInformation
         return $this;
     }
     /**
-     * @return string[][]
+     * @return string[][]|null[]|null
      */
     public function getDriverStatus()
     {
         return $this->driverStatus;
     }
     /**
-     * @param string[][] $driverStatus
+     * @param string[][]|null[]|null $driverStatus
      *
      * @return self
      */
-    public function setDriverStatus(array $driverStatus = null)
+    public function setDriverStatus($driverStatus = null)
     {
         $this->driverStatus = $driverStatus;
         return $this;
     }
     /**
-     * @return string[][]
+     * @return string[][]|null[]|null
      */
     public function getSystemStatus()
     {
         return $this->systemStatus;
     }
     /**
-     * @param string[][] $systemStatus
+     * @param string[][]|null[]|null $systemStatus
      *
      * @return self
      */
-    public function setSystemStatus(array $systemStatus = null)
+    public function setSystemStatus($systemStatus = null)
     {
         $this->systemStatus = $systemStatus;
         return $this;
@@ -573,18 +573,18 @@ class SystemInformation
         return $this;
     }
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getLabels()
     {
         return $this->labels;
     }
     /**
-     * @param string[] $labels
+     * @param string[]|null $labels
      *
      * @return self
      */
-    public function setLabels(array $labels = null)
+    public function setLabels($labels = null)
     {
         $this->labels = $labels;
         return $this;

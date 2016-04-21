@@ -22,7 +22,7 @@ class ExecConfigNormalizer extends SerializerAwareNormalizer implements Denormal
         }
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = array())
+    public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (empty($data)) {
             return null;
@@ -47,15 +47,22 @@ class ExecConfigNormalizer extends SerializerAwareNormalizer implements Denormal
             $object->setTty($data->{'Tty'});
         }
         if (property_exists($data, 'Cmd')) {
-            $values = array();
-            foreach ($data->{'Cmd'} as $value) {
-                $values[] = $value;
+            $value = $data->{'Cmd'};
+            if (is_array($data->{'Cmd'})) {
+                $values = [];
+                foreach ($data->{'Cmd'} as $value_1) {
+                    $values[] = $value_1;
+                }
+                $value = $values;
             }
-            $object->setCmd($values);
+            if (is_null($data->{'Cmd'})) {
+                $value = $data->{'Cmd'};
+            }
+            $object->setCmd($value);
         }
         return $object;
     }
-    public function normalize($object, $format = null, array $context = array())
+    public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
         if (null !== $object->getAttachStdin()) {
@@ -70,13 +77,18 @@ class ExecConfigNormalizer extends SerializerAwareNormalizer implements Denormal
         if (null !== $object->getTty()) {
             $data->{'Tty'} = $object->getTty();
         }
-        if (null !== $object->getCmd()) {
-            $values = array();
-            foreach ($object->getCmd() as $value) {
-                $values[] = $value;
+        $value = $object->getCmd();
+        if (is_array($object->getCmd())) {
+            $values = [];
+            foreach ($object->getCmd() as $value_1) {
+                $values[] = $value_1;
             }
-            $data->{'Cmd'} = $values;
+            $value = $values;
         }
+        if (is_null($object->getCmd())) {
+            $value = $object->getCmd();
+        }
+        $data->{'Cmd'} = $value;
         return $data;
     }
 }

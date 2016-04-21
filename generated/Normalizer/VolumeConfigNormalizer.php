@@ -22,7 +22,7 @@ class VolumeConfigNormalizer extends SerializerAwareNormalizer implements Denorm
         }
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = array())
+    public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (empty($data)) {
             return null;
@@ -41,7 +41,7 @@ class VolumeConfigNormalizer extends SerializerAwareNormalizer implements Denorm
             $object->setDriver($data->{'Driver'});
         }
         if (property_exists($data, 'DriverOpts')) {
-            $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data->{'DriverOpts'} as $key => $value) {
                 $values[$key] = $value;
             }
@@ -49,7 +49,7 @@ class VolumeConfigNormalizer extends SerializerAwareNormalizer implements Denorm
         }
         return $object;
     }
-    public function normalize($object, $format = null, array $context = array())
+    public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
         if (null !== $object->getName()) {

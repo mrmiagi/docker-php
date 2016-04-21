@@ -9,11 +9,11 @@ class IPAM
      */
     protected $driver;
     /**
-     * @var IPAMConfig[]
+     * @var IPAMConfig[]|null
      */
     protected $config;
     /**
-     * @var string[]
+     * @var string[]|null
      */
     protected $options;
     /**
@@ -34,35 +34,35 @@ class IPAM
         return $this;
     }
     /**
-     * @return IPAMConfig[]
+     * @return IPAMConfig[]|null
      */
     public function getConfig()
     {
         return $this->config;
     }
     /**
-     * @param IPAMConfig[] $config
+     * @param IPAMConfig[]|null $config
      *
      * @return self
      */
-    public function setConfig(array $config = null)
+    public function setConfig($config = null)
     {
         $this->config = $config;
         return $this;
     }
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getOptions()
     {
         return $this->options;
     }
     /**
-     * @param string[] $options
+     * @param string[]|null $options
      *
      * @return self
      */
-    public function setOptions(\ArrayObject $options = null)
+    public function setOptions($options = null)
     {
         $this->options = $options;
         return $this;

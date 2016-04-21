@@ -16,7 +16,7 @@ class VolumeResource extends Resource
      *
      * @return \Psr\Http\Message\ResponseInterface|\Docker\API\Model\VolumeList
      */
-    public function findAll($parameters = array(), $fetch = self::FETCH_OBJECT)
+    public function findAll($parameters = [], $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $queryParam->setDefault('filters', NULL);
@@ -42,7 +42,7 @@ class VolumeResource extends Resource
      *
      * @return \Psr\Http\Message\ResponseInterface|\Docker\API\Model\Volume
      */
-    public function create(\Docker\API\Model\VolumeConfig $volumeConfig, $parameters = array(), $fetch = self::FETCH_OBJECT)
+    public function create(\Docker\API\Model\VolumeConfig $volumeConfig, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/volumes/create';
@@ -67,7 +67,7 @@ class VolumeResource extends Resource
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function remove($name, $parameters = array(), $fetch = self::FETCH_OBJECT)
+    public function remove($name, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/volumes/{name}';
@@ -88,7 +88,7 @@ class VolumeResource extends Resource
      *
      * @return \Psr\Http\Message\ResponseInterface|\Docker\API\Model\Volume
      */
-    public function find($name, $parameters = array(), $fetch = self::FETCH_OBJECT)
+    public function find($name, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/volumes/{name}';

@@ -21,7 +21,7 @@ class ContainerResource extends Resource
      *
      * @return \Psr\Http\Message\ResponseInterface|\Docker\API\Model\ContainerConfig[]
      */
-    public function findAll($parameters = array(), $fetch = self::FETCH_OBJECT)
+    public function findAll($parameters = [], $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $queryParam->setDefault('all', false);
@@ -55,7 +55,7 @@ class ContainerResource extends Resource
      *
      * @return \Psr\Http\Message\ResponseInterface|\Docker\API\Model\ContainerCreateResult
      */
-    public function create(\Docker\API\Model\ContainerConfig $container, $parameters = array(), $fetch = self::FETCH_OBJECT)
+    public function create(\Docker\API\Model\ContainerConfig $container, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $queryParam->setDefault('name', NULL);
@@ -83,7 +83,7 @@ class ContainerResource extends Resource
      *
      * @return \Psr\Http\Message\ResponseInterface|\Docker\API\Model\Container
      */
-    public function find($id, $parameters = array(), $fetch = self::FETCH_OBJECT)
+    public function find($id, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/containers/{id}/json';
@@ -111,7 +111,7 @@ class ContainerResource extends Resource
      *
      * @return \Psr\Http\Message\ResponseInterface|\Docker\API\Model\ContainerTop
      */
-    public function listProcesses($id, $parameters = array(), $fetch = self::FETCH_OBJECT)
+    public function listProcesses($id, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $queryParam->setDefault('ps_args', NULL);
@@ -145,7 +145,7 @@ class ContainerResource extends Resource
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function logs($id, $parameters = array(), $fetch = self::FETCH_OBJECT)
+    public function logs($id, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $queryParam->setDefault('follow', false);
@@ -174,7 +174,7 @@ class ContainerResource extends Resource
      *
      * @return \Psr\Http\Message\ResponseInterface|\Docker\API\Model\ContainerChange[]
      */
-    public function changes($id, $parameters = array(), $fetch = self::FETCH_OBJECT)
+    public function changes($id, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $queryParam->setDefault('kind', NULL);
@@ -201,7 +201,7 @@ class ContainerResource extends Resource
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function export($id, $parameters = array(), $fetch = self::FETCH_OBJECT)
+    public function export($id, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/containers/{id}/export';
@@ -224,7 +224,7 @@ class ContainerResource extends Resource
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function stats($id, $parameters = array(), $fetch = self::FETCH_OBJECT)
+    public function stats($id, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $queryParam->setDefault('stream', NULL);
@@ -249,7 +249,7 @@ class ContainerResource extends Resource
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function resize($id, $parameters = array(), $fetch = self::FETCH_OBJECT)
+    public function resize($id, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $queryParam->setDefault('h', NULL);
@@ -272,7 +272,7 @@ class ContainerResource extends Resource
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function start($id, $parameters = array(), $fetch = self::FETCH_OBJECT)
+    public function start($id, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/containers/{id}/start';
@@ -295,7 +295,7 @@ class ContainerResource extends Resource
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function stop($id, $parameters = array(), $fetch = self::FETCH_OBJECT)
+    public function stop($id, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $queryParam->setDefault('t', NULL);
@@ -319,7 +319,7 @@ class ContainerResource extends Resource
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function restart($id, $parameters = array(), $fetch = self::FETCH_OBJECT)
+    public function restart($id, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $queryParam->setDefault('t', NULL);
@@ -343,7 +343,7 @@ class ContainerResource extends Resource
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function kill($id, $parameters = array(), $fetch = self::FETCH_OBJECT)
+    public function kill($id, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $queryParam->setDefault('signal', NULL);
@@ -366,7 +366,7 @@ class ContainerResource extends Resource
      *
      * @return \Psr\Http\Message\ResponseInterface|\Docker\API\Model\ContainerUpdateResult
      */
-    public function update($id, \Docker\API\Model\ResourceUpdate $resourceConfig, $parameters = array(), $fetch = self::FETCH_OBJECT)
+    public function update($id, \Docker\API\Model\ResourceUpdate $resourceConfig, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/containers/{id}/update';
@@ -394,7 +394,7 @@ class ContainerResource extends Resource
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function rename($id, $parameters = array(), $fetch = self::FETCH_OBJECT)
+    public function rename($id, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $queryParam->setRequired('name');
@@ -416,7 +416,7 @@ class ContainerResource extends Resource
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function pause($id, $parameters = array(), $fetch = self::FETCH_OBJECT)
+    public function pause($id, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/containers/{id}/pause';
@@ -437,7 +437,7 @@ class ContainerResource extends Resource
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function unpause($id, $parameters = array(), $fetch = self::FETCH_OBJECT)
+    public function unpause($id, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/containers/{id}/unpause';
@@ -464,7 +464,7 @@ class ContainerResource extends Resource
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function attach($id, $parameters = array(), $fetch = self::FETCH_OBJECT)
+    public function attach($id, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $queryParam->setDefault('logs', NULL);
@@ -496,7 +496,7 @@ class ContainerResource extends Resource
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function attachWebsocket($id, $parameters = array(), $fetch = self::FETCH_OBJECT)
+    public function attachWebsocket($id, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $queryParam->setDefault('logs', NULL);
@@ -522,7 +522,7 @@ class ContainerResource extends Resource
      *
      * @return \Psr\Http\Message\ResponseInterface|\Docker\API\Model\ContainerWait
      */
-    public function wait($id, $parameters = array(), $fetch = self::FETCH_OBJECT)
+    public function wait($id, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/containers/{id}/wait';
@@ -551,7 +551,7 @@ class ContainerResource extends Resource
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function remove($id, $parameters = array(), $fetch = self::FETCH_OBJECT)
+    public function remove($id, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $queryParam->setDefault('v', NULL);
@@ -576,7 +576,7 @@ class ContainerResource extends Resource
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function getArchive($id, $parameters = array(), $fetch = self::FETCH_OBJECT)
+    public function getArchive($id, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $queryParam->setRequired('path');
@@ -600,7 +600,7 @@ class ContainerResource extends Resource
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function getArchiveInformation($id, $parameters = array(), $fetch = self::FETCH_OBJECT)
+    public function getArchiveInformation($id, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $queryParam->setRequired('path');
@@ -626,7 +626,7 @@ class ContainerResource extends Resource
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function putArchive($id, $inputStream, $parameters = array(), $fetch = self::FETCH_OBJECT)
+    public function putArchive($id, $inputStream, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $queryParam->setRequired('path');

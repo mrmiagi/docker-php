@@ -5,43 +5,43 @@ namespace Docker\API\Model;
 class ContainerTop
 {
     /**
-     * @var string[]
+     * @var string[]|null
      */
     protected $titles;
     /**
-     * @var string[][]
+     * @var string[][]|null[]|null
      */
     protected $processes;
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getTitles()
     {
         return $this->titles;
     }
     /**
-     * @param string[] $titles
+     * @param string[]|null $titles
      *
      * @return self
      */
-    public function setTitles(array $titles = null)
+    public function setTitles($titles = null)
     {
         $this->titles = $titles;
         return $this;
     }
     /**
-     * @return string[][]
+     * @return string[][]|null[]|null
      */
     public function getProcesses()
     {
         return $this->processes;
     }
     /**
-     * @param string[][] $processes
+     * @param string[][]|null[]|null $processes
      *
      * @return self
      */
-    public function setProcesses(array $processes = null)
+    public function setProcesses($processes = null)
     {
         $this->processes = $processes;
         return $this;

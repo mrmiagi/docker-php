@@ -8,7 +8,7 @@ class NormalizerFactory
 {
     public static function create()
     {
-        $normalizers = array();
+        $normalizers = [];
         $normalizers[] = new ReferenceNormalizer();
         $normalizers[] = new NormalizerArray();
         $normalizers[] = new VersionNormalizer();

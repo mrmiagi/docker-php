@@ -5,22 +5,22 @@ namespace Docker\API\Model;
 class VolumeList
 {
     /**
-     * @var Volume[]
+     * @var Volume[]|null
      */
     protected $volumes;
     /**
-     * @return Volume[]
+     * @return Volume[]|null
      */
     public function getVolumes()
     {
         return $this->volumes;
     }
     /**
-     * @param Volume[] $volumes
+     * @param Volume[]|null $volumes
      *
      * @return self
      */
-    public function setVolumes(array $volumes = null)
+    public function setVolumes($volumes = null)
     {
         $this->volumes = $volumes;
         return $this;

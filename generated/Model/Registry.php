@@ -5,7 +5,7 @@ namespace Docker\API\Model;
 class Registry
 {
     /**
-     * @var string[]
+     * @var string[]|null
      */
     protected $mirrors;
     /**
@@ -21,18 +21,18 @@ class Registry
      */
     protected $secure;
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getMirrors()
     {
         return $this->mirrors;
     }
     /**
-     * @param string[] $mirrors
+     * @param string[]|null $mirrors
      *
      * @return self
      */
-    public function setMirrors(array $mirrors = null)
+    public function setMirrors($mirrors = null)
     {
         $this->mirrors = $mirrors;
         return $this;

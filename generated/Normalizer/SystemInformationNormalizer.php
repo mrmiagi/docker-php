@@ -22,7 +22,7 @@ class SystemInformationNormalizer extends SerializerAwareNormalizer implements D
         }
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = array())
+    public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (empty($data)) {
             return null;
@@ -68,26 +68,54 @@ class SystemInformationNormalizer extends SerializerAwareNormalizer implements D
             $object->setDriver($data->{'Driver'});
         }
         if (property_exists($data, 'DriverStatus')) {
-            $values = array();
-            foreach ($data->{'DriverStatus'} as $value) {
-                $values_1 = array();
-                foreach ($value as $value_1) {
-                    $values_1[] = $value_1;
+            $value = $data->{'DriverStatus'};
+            if (is_array($data->{'DriverStatus'})) {
+                $values = [];
+                foreach ($data->{'DriverStatus'} as $value_1) {
+                    $value_2 = $value_1;
+                    if (is_array($value_1)) {
+                        $values_1 = [];
+                        foreach ($value_1 as $value_3) {
+                            $values_1[] = $value_3;
+                        }
+                        $value_2 = $values_1;
+                    }
+                    if (is_null($value_1)) {
+                        $value_2 = $value_1;
+                    }
+                    $values[] = $value_2;
                 }
-                $values[] = $values_1;
+                $value = $values;
             }
-            $object->setDriverStatus($values);
+            if (is_null($data->{'DriverStatus'})) {
+                $value = $data->{'DriverStatus'};
+            }
+            $object->setDriverStatus($value);
         }
         if (property_exists($data, 'SystemStatus')) {
-            $values_2 = array();
-            foreach ($data->{'SystemStatus'} as $value_2) {
-                $values_3 = array();
-                foreach ($value_2 as $value_3) {
-                    $values_3[] = $value_3;
+            $value_4 = $data->{'SystemStatus'};
+            if (is_array($data->{'SystemStatus'})) {
+                $values_2 = [];
+                foreach ($data->{'SystemStatus'} as $value_5) {
+                    $value_6 = $value_5;
+                    if (is_array($value_5)) {
+                        $values_3 = [];
+                        foreach ($value_5 as $value_7) {
+                            $values_3[] = $value_7;
+                        }
+                        $value_6 = $values_3;
+                    }
+                    if (is_null($value_5)) {
+                        $value_6 = $value_5;
+                    }
+                    $values_2[] = $value_6;
                 }
-                $values_2[] = $values_3;
+                $value_4 = $values_2;
             }
-            $object->setSystemStatus($values_2);
+            if (is_null($data->{'SystemStatus'})) {
+                $value_4 = $data->{'SystemStatus'};
+            }
+            $object->setSystemStatus($value_4);
         }
         if (property_exists($data, 'ExecutionDriver')) {
             $object->setExecutionDriver($data->{'ExecutionDriver'});
@@ -123,11 +151,18 @@ class SystemInformationNormalizer extends SerializerAwareNormalizer implements D
             $object->setKernelVersion($data->{'KernelVersion'});
         }
         if (property_exists($data, 'Labels')) {
-            $values_4 = array();
-            foreach ($data->{'Labels'} as $value_4) {
-                $values_4[] = $value_4;
+            $value_8 = $data->{'Labels'};
+            if (is_array($data->{'Labels'})) {
+                $values_4 = [];
+                foreach ($data->{'Labels'} as $value_9) {
+                    $values_4[] = $value_9;
+                }
+                $value_8 = $values_4;
             }
-            $object->setLabels($values_4);
+            if (is_null($data->{'Labels'})) {
+                $value_8 = $data->{'Labels'};
+            }
+            $object->setLabels($value_8);
         }
         if (property_exists($data, 'MemTotal')) {
             $object->setMemTotal($data->{'MemTotal'});
@@ -176,7 +211,7 @@ class SystemInformationNormalizer extends SerializerAwareNormalizer implements D
         }
         return $object;
     }
-    public function normalize($object, $format = null, array $context = array())
+    public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
         if (null !== $object->getArchitecture()) {
@@ -212,28 +247,52 @@ class SystemInformationNormalizer extends SerializerAwareNormalizer implements D
         if (null !== $object->getDriver()) {
             $data->{'Driver'} = $object->getDriver();
         }
-        if (null !== $object->getDriverStatus()) {
-            $values = array();
-            foreach ($object->getDriverStatus() as $value) {
-                $values_1 = array();
-                foreach ($value as $value_1) {
-                    $values_1[] = $value_1;
+        $value = $object->getDriverStatus();
+        if (is_array($object->getDriverStatus())) {
+            $values = [];
+            foreach ($object->getDriverStatus() as $value_1) {
+                $value_2 = $value_1;
+                if (is_array($value_1)) {
+                    $values_1 = [];
+                    foreach ($value_1 as $value_3) {
+                        $values_1[] = $value_3;
+                    }
+                    $value_2 = $values_1;
                 }
-                $values[] = $values_1;
-            }
-            $data->{'DriverStatus'} = $values;
-        }
-        if (null !== $object->getSystemStatus()) {
-            $values_2 = array();
-            foreach ($object->getSystemStatus() as $value_2) {
-                $values_3 = array();
-                foreach ($value_2 as $value_3) {
-                    $values_3[] = $value_3;
+                if (is_null($value_1)) {
+                    $value_2 = $value_1;
                 }
-                $values_2[] = $values_3;
+                $values[] = $value_2;
             }
-            $data->{'SystemStatus'} = $values_2;
+            $value = $values;
         }
+        if (is_null($object->getDriverStatus())) {
+            $value = $object->getDriverStatus();
+        }
+        $data->{'DriverStatus'} = $value;
+        $value_4 = $object->getSystemStatus();
+        if (is_array($object->getSystemStatus())) {
+            $values_2 = [];
+            foreach ($object->getSystemStatus() as $value_5) {
+                $value_6 = $value_5;
+                if (is_array($value_5)) {
+                    $values_3 = [];
+                    foreach ($value_5 as $value_7) {
+                        $values_3[] = $value_7;
+                    }
+                    $value_6 = $values_3;
+                }
+                if (is_null($value_5)) {
+                    $value_6 = $value_5;
+                }
+                $values_2[] = $value_6;
+            }
+            $value_4 = $values_2;
+        }
+        if (is_null($object->getSystemStatus())) {
+            $value_4 = $object->getSystemStatus();
+        }
+        $data->{'SystemStatus'} = $value_4;
         if (null !== $object->getExecutionDriver()) {
             $data->{'ExecutionDriver'} = $object->getExecutionDriver();
         }
@@ -267,13 +326,18 @@ class SystemInformationNormalizer extends SerializerAwareNormalizer implements D
         if (null !== $object->getKernelVersion()) {
             $data->{'KernelVersion'} = $object->getKernelVersion();
         }
-        if (null !== $object->getLabels()) {
-            $values_4 = array();
-            foreach ($object->getLabels() as $value_4) {
-                $values_4[] = $value_4;
+        $value_8 = $object->getLabels();
+        if (is_array($object->getLabels())) {
+            $values_4 = [];
+            foreach ($object->getLabels() as $value_9) {
+                $values_4[] = $value_9;
             }
-            $data->{'Labels'} = $values_4;
+            $value_8 = $values_4;
         }
+        if (is_null($object->getLabels())) {
+            $value_8 = $object->getLabels();
+        }
+        $data->{'Labels'} = $value_8;
         if (null !== $object->getMemTotal()) {
             $data->{'MemTotal'} = $object->getMemTotal();
         }

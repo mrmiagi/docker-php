@@ -9,7 +9,7 @@ class ContainerConfig
      */
     protected $id;
     /**
-     * @var string[]
+     * @var string[]|null
      */
     protected $names;
     /**
@@ -33,7 +33,7 @@ class ContainerConfig
      */
     protected $status;
     /**
-     * @var Port[]
+     * @var Port[]|null
      */
     protected $ports;
     /**
@@ -85,7 +85,7 @@ class ContainerConfig
      */
     protected $stdinOnce;
     /**
-     * @var string[]
+     * @var string[]|null
      */
     protected $env;
     /**
@@ -97,7 +97,7 @@ class ContainerConfig
      */
     protected $entrypoint;
     /**
-     * @var Mount[]
+     * @var Mount[]|null
      */
     protected $mounts;
     /**
@@ -142,18 +142,18 @@ class ContainerConfig
         return $this;
     }
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getNames()
     {
         return $this->names;
     }
     /**
-     * @param string[] $names
+     * @param string[]|null $names
      *
      * @return self
      */
-    public function setNames(array $names = null)
+    public function setNames($names = null)
     {
         $this->names = $names;
         return $this;
@@ -244,18 +244,18 @@ class ContainerConfig
         return $this;
     }
     /**
-     * @return Port[]
+     * @return Port[]|null
      */
     public function getPorts()
     {
         return $this->ports;
     }
     /**
-     * @param Port[] $ports
+     * @param Port[]|null $ports
      *
      * @return self
      */
-    public function setPorts(array $ports = null)
+    public function setPorts($ports = null)
     {
         $this->ports = $ports;
         return $this;
@@ -465,18 +465,18 @@ class ContainerConfig
         return $this;
     }
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getEnv()
     {
         return $this->env;
     }
     /**
-     * @param string[] $env
+     * @param string[]|null $env
      *
      * @return self
      */
-    public function setEnv(array $env = null)
+    public function setEnv($env = null)
     {
         $this->env = $env;
         return $this;
@@ -516,18 +516,18 @@ class ContainerConfig
         return $this;
     }
     /**
-     * @return Mount[]
+     * @return Mount[]|null
      */
     public function getMounts()
     {
         return $this->mounts;
     }
     /**
-     * @param Mount[] $mounts
+     * @param Mount[]|null $mounts
      *
      * @return self
      */
-    public function setMounts(array $mounts = null)
+    public function setMounts($mounts = null)
     {
         $this->mounts = $mounts;
         return $this;

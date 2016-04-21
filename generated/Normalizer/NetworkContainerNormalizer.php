@@ -22,7 +22,7 @@ class NetworkContainerNormalizer extends SerializerAwareNormalizer implements De
         }
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = array())
+    public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (empty($data)) {
             return null;
@@ -51,7 +51,7 @@ class NetworkContainerNormalizer extends SerializerAwareNormalizer implements De
         }
         return $object;
     }
-    public function normalize($object, $format = null, array $context = array())
+    public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
         if (null !== $object->getName()) {

@@ -5,7 +5,7 @@ namespace Docker\API\Model;
 class ImageItem
 {
     /**
-     * @var string[]
+     * @var string[]|null
      */
     protected $repoTags;
     /**
@@ -29,26 +29,26 @@ class ImageItem
      */
     protected $virtualSize;
     /**
-     * @var string[]
+     * @var string[]|null
      */
     protected $labels;
     /**
-     * @var string[]
+     * @var string[]|null
      */
     protected $repoDigests;
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getRepoTags()
     {
         return $this->repoTags;
     }
     /**
-     * @param string[] $repoTags
+     * @param string[]|null $repoTags
      *
      * @return self
      */
-    public function setRepoTags(array $repoTags = null)
+    public function setRepoTags($repoTags = null)
     {
         $this->repoTags = $repoTags;
         return $this;
@@ -139,35 +139,35 @@ class ImageItem
         return $this;
     }
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getLabels()
     {
         return $this->labels;
     }
     /**
-     * @param string[] $labels
+     * @param string[]|null $labels
      *
      * @return self
      */
-    public function setLabels(\ArrayObject $labels = null)
+    public function setLabels($labels = null)
     {
         $this->labels = $labels;
         return $this;
     }
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getRepoDigests()
     {
         return $this->repoDigests;
     }
     /**
-     * @param string[] $repoDigests
+     * @param string[]|null $repoDigests
      *
      * @return self
      */
-    public function setRepoDigests(array $repoDigests = null)
+    public function setRepoDigests($repoDigests = null)
     {
         $this->repoDigests = $repoDigests;
         return $this;

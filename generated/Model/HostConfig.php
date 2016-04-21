@@ -89,7 +89,7 @@ class HostConfig
      */
     protected $readonlyRootfs;
     /**
-     * @var string[]
+     * @var string[]|null
      */
     protected $dns;
     /**
@@ -498,18 +498,18 @@ class HostConfig
         return $this;
     }
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getDns()
     {
         return $this->dns;
     }
     /**
-     * @param string[] $dns
+     * @param string[]|null $dns
      *
      * @return self
      */
-    public function setDns(array $dns = null)
+    public function setDns($dns = null)
     {
         $this->dns = $dns;
         return $this;

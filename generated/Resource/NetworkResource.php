@@ -16,7 +16,7 @@ class NetworkResource extends Resource
      *
      * @return \Psr\Http\Message\ResponseInterface|\Docker\API\Model\Network[]
      */
-    public function findAll($parameters = array(), $fetch = self::FETCH_OBJECT)
+    public function findAll($parameters = [], $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $queryParam->setDefault('filters', NULL);
@@ -42,7 +42,7 @@ class NetworkResource extends Resource
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function remove($id, $parameters = array(), $fetch = self::FETCH_OBJECT)
+    public function remove($id, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/networks/{id}';
@@ -63,7 +63,7 @@ class NetworkResource extends Resource
      *
      * @return \Psr\Http\Message\ResponseInterface|\Docker\API\Model\Network
      */
-    public function find($id, $parameters = array(), $fetch = self::FETCH_OBJECT)
+    public function find($id, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/networks/{id}';
@@ -84,14 +84,18 @@ class NetworkResource extends Resource
      * Create network.
      *
      * @param \Docker\API\Model\NetworkCreateConfig $networkConfig Network configuration
-     * @param array  $parameters List of parameters
+     * @param array  $parameters {
+     *     @var string $Content-Type Content Type of input
+     * }
      * @param string $fetch      Fetch mode (object or response)
      *
      * @return \Psr\Http\Message\ResponseInterface|\Docker\API\Model\NetworkCreateResult
      */
-    public function create(\Docker\API\Model\NetworkCreateConfig $networkConfig, $parameters = array(), $fetch = self::FETCH_OBJECT)
+    public function create(\Docker\API\Model\NetworkCreateConfig $networkConfig, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
+        $queryParam->setDefault('Content-Type', 'application/json');
+        $queryParam->setHeaderParameters(array('Content-Type'));
         $url = '/networks/create';
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
         $headers = array_merge(array('Host' => 'localhost'), $queryParam->buildHeaders($parameters));
@@ -115,7 +119,7 @@ class NetworkResource extends Resource
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function connect($id, \Docker\API\Model\ContainerConnect $container, $parameters = array(), $fetch = self::FETCH_OBJECT)
+    public function connect($id, \Docker\API\Model\ContainerConnect $container, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/networks/{id}/connect';
@@ -137,7 +141,7 @@ class NetworkResource extends Resource
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function disconnect($id, \Docker\API\Model\ContainerDisconnect $container, $parameters = array(), $fetch = self::FETCH_OBJECT)
+    public function disconnect($id, \Docker\API\Model\ContainerDisconnect $container, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/networks/{id}/disconnect';

@@ -22,7 +22,7 @@ class ProcessConfigNormalizer extends SerializerAwareNormalizer implements Denor
         }
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = array())
+    public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (empty($data)) {
             return null;
@@ -47,15 +47,22 @@ class ProcessConfigNormalizer extends SerializerAwareNormalizer implements Denor
             $object->setEntrypoint($data->{'entrypoint'});
         }
         if (property_exists($data, 'arguments')) {
-            $values = array();
-            foreach ($data->{'arguments'} as $value) {
-                $values[] = $value;
+            $value = $data->{'arguments'};
+            if (is_array($data->{'arguments'})) {
+                $values = [];
+                foreach ($data->{'arguments'} as $value_1) {
+                    $values[] = $value_1;
+                }
+                $value = $values;
             }
-            $object->setArguments($values);
+            if (is_null($data->{'arguments'})) {
+                $value = $data->{'arguments'};
+            }
+            $object->setArguments($value);
         }
         return $object;
     }
-    public function normalize($object, $format = null, array $context = array())
+    public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
         if (null !== $object->getPrivileged()) {
@@ -70,13 +77,18 @@ class ProcessConfigNormalizer extends SerializerAwareNormalizer implements Denor
         if (null !== $object->getEntrypoint()) {
             $data->{'entrypoint'} = $object->getEntrypoint();
         }
-        if (null !== $object->getArguments()) {
-            $values = array();
-            foreach ($object->getArguments() as $value) {
-                $values[] = $value;
+        $value = $object->getArguments();
+        if (is_array($object->getArguments())) {
+            $values = [];
+            foreach ($object->getArguments() as $value_1) {
+                $values[] = $value_1;
             }
-            $data->{'arguments'} = $values;
+            $value = $values;
         }
+        if (is_null($object->getArguments())) {
+            $value = $object->getArguments();
+        }
+        $data->{'arguments'} = $value;
         return $data;
     }
 }

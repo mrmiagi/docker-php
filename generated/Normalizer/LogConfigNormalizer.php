@@ -22,7 +22,7 @@ class LogConfigNormalizer extends SerializerAwareNormalizer implements Denormali
         }
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = array())
+    public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (empty($data)) {
             return null;
@@ -38,7 +38,7 @@ class LogConfigNormalizer extends SerializerAwareNormalizer implements Denormali
             $object->setType($data->{'Type'});
         }
         if (property_exists($data, 'Config')) {
-            $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data->{'Config'} as $key => $value) {
                 $values[$key] = $value;
             }
@@ -46,7 +46,7 @@ class LogConfigNormalizer extends SerializerAwareNormalizer implements Denormali
         }
         return $object;
     }
-    public function normalize($object, $format = null, array $context = array())
+    public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
         if (null !== $object->getType()) {
