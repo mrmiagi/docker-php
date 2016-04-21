@@ -4,6 +4,7 @@ namespace Docker\Manager;
 
 use Docker\API\Resource\ExecResource;
 use Docker\Stream\DockerRawStream;
+use Docker\Stream\DockerTtyStream;
 
 class ExecManager extends ExecResource
 {
@@ -15,7 +16,11 @@ class ExecManager extends ExecResource
 
         if ($response->getStatusCode() == 200 && DockerRawStream::HEADER == $response->getHeaderLine('Content-Type')) {
             if ($fetch == self::FETCH_STREAM) {
-                return new DockerRawStream($response->getBody());
+                if($execStartConfig->getTty()) {
+                    return new DockerTtyStream($response->getBody());
+                } else {
+                    return new DockerRawStream($response->getBody());
+                }
             }
         }
 
