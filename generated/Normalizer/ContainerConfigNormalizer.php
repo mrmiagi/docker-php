@@ -22,7 +22,7 @@ class ContainerConfigNormalizer extends SerializerAwareNormalizer implements Den
         }
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = [])
+    public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (empty($data)) {
             return null;
@@ -40,7 +40,7 @@ class ContainerConfigNormalizer extends SerializerAwareNormalizer implements Den
         if (property_exists($data, 'Names')) {
             $value = $data->{'Names'};
             if (is_array($data->{'Names'})) {
-                $values = [];
+                $values = array();
                 foreach ($data->{'Names'} as $value_1) {
                     $values[] = $value_1;
                 }
@@ -69,7 +69,7 @@ class ContainerConfigNormalizer extends SerializerAwareNormalizer implements Den
         if (property_exists($data, 'Ports')) {
             $value_2 = $data->{'Ports'};
             if (is_array($data->{'Ports'})) {
-                $values_1 = [];
+                $values_1 = array();
                 foreach ($data->{'Ports'} as $value_3) {
                     $values_1[] = $this->serializer->deserialize($value_3, 'Docker\\API\\Model\\Port', 'raw', $context);
                 }
@@ -81,7 +81,7 @@ class ContainerConfigNormalizer extends SerializerAwareNormalizer implements Den
             $object->setPorts($value_2);
         }
         if (property_exists($data, 'Labels')) {
-            $values_2 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_2 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data->{'Labels'} as $key => $value_4) {
                 $values_2[$key] = $value_4;
             }
@@ -123,7 +123,7 @@ class ContainerConfigNormalizer extends SerializerAwareNormalizer implements Den
         if (property_exists($data, 'Env')) {
             $value_5 = $data->{'Env'};
             if (is_array($data->{'Env'})) {
-                $values_3 = [];
+                $values_3 = array();
                 foreach ($data->{'Env'} as $value_6) {
                     $values_3[] = $value_6;
                 }
@@ -137,7 +137,7 @@ class ContainerConfigNormalizer extends SerializerAwareNormalizer implements Den
         if (property_exists($data, 'Cmd')) {
             $value_7 = $data->{'Cmd'};
             if (is_array($data->{'Cmd'})) {
-                $values_4 = [];
+                $values_4 = array();
                 foreach ($data->{'Cmd'} as $value_8) {
                     $values_4[] = $value_8;
                 }
@@ -151,7 +151,7 @@ class ContainerConfigNormalizer extends SerializerAwareNormalizer implements Den
         if (property_exists($data, 'Entrypoint')) {
             $value_9 = $data->{'Entrypoint'};
             if (is_array($data->{'Entrypoint'})) {
-                $values_5 = [];
+                $values_5 = array();
                 foreach ($data->{'Entrypoint'} as $value_10) {
                     $values_5[] = $value_10;
                 }
@@ -165,7 +165,7 @@ class ContainerConfigNormalizer extends SerializerAwareNormalizer implements Den
         if (property_exists($data, 'Mounts')) {
             $value_11 = $data->{'Mounts'};
             if (is_array($data->{'Mounts'})) {
-                $values_6 = [];
+                $values_6 = array();
                 foreach ($data->{'Mounts'} as $value_12) {
                     $values_6[] = $this->serializer->deserialize($value_12, 'Docker\\API\\Model\\Mount', 'raw', $context);
                 }
@@ -186,7 +186,7 @@ class ContainerConfigNormalizer extends SerializerAwareNormalizer implements Den
             $object->setMacAddress($data->{'MacAddress'});
         }
         if (property_exists($data, 'ExposedPorts')) {
-            $values_7 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_7 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data->{'ExposedPorts'} as $key_1 => $value_13) {
                 $values_7[$key_1] = $value_13;
             }
@@ -200,7 +200,7 @@ class ContainerConfigNormalizer extends SerializerAwareNormalizer implements Den
         }
         return $object;
     }
-    public function normalize($object, $format = null, array $context = [])
+    public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
         if (null !== $object->getId()) {
@@ -208,7 +208,7 @@ class ContainerConfigNormalizer extends SerializerAwareNormalizer implements Den
         }
         $value = $object->getNames();
         if (is_array($object->getNames())) {
-            $values = [];
+            $values = array();
             foreach ($object->getNames() as $value_1) {
                 $values[] = $value_1;
             }
@@ -235,7 +235,7 @@ class ContainerConfigNormalizer extends SerializerAwareNormalizer implements Den
         }
         $value_2 = $object->getPorts();
         if (is_array($object->getPorts())) {
-            $values_1 = [];
+            $values_1 = array();
             foreach ($object->getPorts() as $value_3) {
                 $values_1[] = $this->serializer->serialize($value_3, 'raw', $context);
             }
@@ -287,7 +287,7 @@ class ContainerConfigNormalizer extends SerializerAwareNormalizer implements Den
         }
         $value_5 = $object->getEnv();
         if (is_array($object->getEnv())) {
-            $values_3 = [];
+            $values_3 = array();
             foreach ($object->getEnv() as $value_6) {
                 $values_3[] = $value_6;
             }
@@ -300,7 +300,7 @@ class ContainerConfigNormalizer extends SerializerAwareNormalizer implements Den
         if (null !== $object->getCmd()) {
             $value_7 = $object->getCmd();
             if (is_array($object->getCmd())) {
-                $values_4 = [];
+                $values_4 = array();
                 foreach ($object->getCmd() as $value_8) {
                     $values_4[] = $value_8;
                 }
@@ -314,7 +314,7 @@ class ContainerConfigNormalizer extends SerializerAwareNormalizer implements Den
         if (null !== $object->getEntrypoint()) {
             $value_9 = $object->getEntrypoint();
             if (is_array($object->getEntrypoint())) {
-                $values_5 = [];
+                $values_5 = array();
                 foreach ($object->getEntrypoint() as $value_10) {
                     $values_5[] = $value_10;
                 }
@@ -327,7 +327,7 @@ class ContainerConfigNormalizer extends SerializerAwareNormalizer implements Den
         }
         $value_11 = $object->getMounts();
         if (is_array($object->getMounts())) {
-            $values_6 = [];
+            $values_6 = array();
             foreach ($object->getMounts() as $value_12) {
                 $values_6[] = $this->serializer->serialize($value_12, 'raw', $context);
             }

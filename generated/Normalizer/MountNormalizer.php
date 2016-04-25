@@ -22,7 +22,7 @@ class MountNormalizer extends SerializerAwareNormalizer implements DenormalizerI
         }
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = [])
+    public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (empty($data)) {
             return null;
@@ -48,7 +48,7 @@ class MountNormalizer extends SerializerAwareNormalizer implements DenormalizerI
         }
         return $object;
     }
-    public function normalize($object, $format = null, array $context = [])
+    public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
         if (null !== $object->getSource()) {

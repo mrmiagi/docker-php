@@ -29,7 +29,7 @@ class NetworkConfig
      */
     protected $portMapping;
     /**
-     * @var ContainerNetwork[]
+     * @var ContainerNetwork[]|null
      */
     protected $networks;
     /**
@@ -139,18 +139,18 @@ class NetworkConfig
         return $this;
     }
     /**
-     * @return ContainerNetwork[]
+     * @return ContainerNetwork[]|null
      */
     public function getNetworks()
     {
         return $this->networks;
     }
     /**
-     * @param ContainerNetwork[] $networks
+     * @param ContainerNetwork[]|null $networks
      *
      * @return self
      */
-    public function setNetworks(\ArrayObject $networks = null)
+    public function setNetworks($networks = null)
     {
         $this->networks = $networks;
         return $this;

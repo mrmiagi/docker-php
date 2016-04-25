@@ -19,7 +19,7 @@ class ImageResource extends Resource
      *
      * @return \Psr\Http\Message\ResponseInterface|\Docker\API\Model\ImageItem[]
      */
-    public function findAll($parameters = [], $fetch = self::FETCH_OBJECT)
+    public function findAll($parameters = array(), $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $queryParam->setDefault('all', false);
@@ -66,7 +66,7 @@ class ImageResource extends Resource
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function build($inputStream, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function build($inputStream, $parameters = array(), $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $queryParam->setDefault('dockerfile', NULL);
@@ -111,7 +111,7 @@ class ImageResource extends Resource
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function create($inputImage, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function create($inputImage, $parameters = array(), $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $queryParam->setDefault('fromImage', NULL);
@@ -137,7 +137,7 @@ class ImageResource extends Resource
      *
      * @return \Psr\Http\Message\ResponseInterface|\Docker\API\Model\Image
      */
-    public function find($name, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function find($name, $parameters = array(), $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/images/{name}/json';
@@ -163,7 +163,7 @@ class ImageResource extends Resource
      *
      * @return \Psr\Http\Message\ResponseInterface|\Docker\API\Model\ImageHistoryItem[]
      */
-    public function history($name, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function history($name, $parameters = array(), $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/images/{name}/history';
@@ -192,7 +192,7 @@ class ImageResource extends Resource
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function push($name, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function push($name, $parameters = array(), $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $queryParam->setDefault('tag', NULL);
@@ -220,7 +220,7 @@ class ImageResource extends Resource
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function tag($name, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function tag($name, $parameters = array(), $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $queryParam->setDefault('repo', NULL);
@@ -247,7 +247,7 @@ class ImageResource extends Resource
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function remove($name, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function remove($name, $parameters = array(), $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $queryParam->setDefault('force', NULL);
@@ -271,7 +271,7 @@ class ImageResource extends Resource
      *
      * @return \Psr\Http\Message\ResponseInterface|\Docker\API\Model\ImageSearchResult[]
      */
-    public function search($parameters = [], $fetch = self::FETCH_OBJECT)
+    public function search($parameters = array(), $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $queryParam->setDefault('term', NULL);
@@ -306,7 +306,7 @@ class ImageResource extends Resource
      *
      * @return \Psr\Http\Message\ResponseInterface|\Docker\API\Model\CommitResult
      */
-    public function commit(\Docker\API\Model\ContainerConfig $containerConfig, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function commit(\Docker\API\Model\ContainerConfig $containerConfig, $parameters = array(), $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $queryParam->setDefault('container', NULL);
@@ -340,7 +340,7 @@ class ImageResource extends Resource
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function save($name, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function save($name, $parameters = array(), $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/images/{name}/get';
@@ -362,7 +362,7 @@ class ImageResource extends Resource
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function saveAll($parameters = [], $fetch = self::FETCH_OBJECT)
+    public function saveAll($parameters = array(), $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $queryParam->setDefault('names', NULL);
@@ -383,7 +383,7 @@ class ImageResource extends Resource
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function load($imagesTarball, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function load($imagesTarball, $parameters = array(), $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/images/load';

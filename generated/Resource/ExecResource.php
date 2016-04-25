@@ -18,7 +18,7 @@ class ExecResource extends Resource
      *
      * @return \Psr\Http\Message\ResponseInterface|\Docker\API\Model\ExecCreateResult
      */
-    public function create($id, \Docker\API\Model\ExecConfig $execConfig, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function create($id, \Docker\API\Model\ExecConfig $execConfig, $parameters = array(), $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $queryParam->setDefault('Content-Type', 'application/json');
@@ -49,7 +49,7 @@ class ExecResource extends Resource
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function start($id, \Docker\API\Model\ExecStartConfig $execStartConfig, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function start($id, \Docker\API\Model\ExecStartConfig $execStartConfig, $parameters = array(), $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $queryParam->setDefault('Content-Type', 'application/json');
@@ -75,7 +75,7 @@ class ExecResource extends Resource
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function resize($id, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function resize($id, $parameters = array(), $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $queryParam->setDefault('h', NULL);
@@ -98,7 +98,7 @@ class ExecResource extends Resource
      *
      * @return \Psr\Http\Message\ResponseInterface|\Docker\API\Model\ExecCommand
      */
-    public function find($id, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function find($id, $parameters = array(), $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/exec/{id}/json';

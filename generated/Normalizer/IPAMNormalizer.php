@@ -22,7 +22,7 @@ class IPAMNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         }
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = [])
+    public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (empty($data)) {
             return null;
@@ -40,7 +40,7 @@ class IPAMNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         if (property_exists($data, 'Config')) {
             $value = $data->{'Config'};
             if (is_array($data->{'Config'})) {
-                $values = [];
+                $values = array();
                 foreach ($data->{'Config'} as $value_1) {
                     $values[] = $this->serializer->deserialize($value_1, 'Docker\\API\\Model\\IPAMConfig', 'raw', $context);
                 }
@@ -54,7 +54,7 @@ class IPAMNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         if (property_exists($data, 'Options')) {
             $value_2 = $data->{'Options'};
             if (is_object($data->{'Options'})) {
-                $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+                $values_1 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
                 foreach ($data->{'Options'} as $key => $value_3) {
                     $values_1[$key] = $value_3;
                 }
@@ -67,7 +67,7 @@ class IPAMNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         }
         return $object;
     }
-    public function normalize($object, $format = null, array $context = [])
+    public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
         if (null !== $object->getDriver()) {
@@ -75,7 +75,7 @@ class IPAMNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         }
         $value = $object->getConfig();
         if (is_array($object->getConfig())) {
-            $values = [];
+            $values = array();
             foreach ($object->getConfig() as $value_1) {
                 $values[] = $this->serializer->serialize($value_1, 'raw', $context);
             }

@@ -22,7 +22,7 @@ class ExecConfigNormalizer extends SerializerAwareNormalizer implements Denormal
         }
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = [])
+    public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (empty($data)) {
             return null;
@@ -49,7 +49,7 @@ class ExecConfigNormalizer extends SerializerAwareNormalizer implements Denormal
         if (property_exists($data, 'Cmd')) {
             $value = $data->{'Cmd'};
             if (is_array($data->{'Cmd'})) {
-                $values = [];
+                $values = array();
                 foreach ($data->{'Cmd'} as $value_1) {
                     $values[] = $value_1;
                 }
@@ -62,7 +62,7 @@ class ExecConfigNormalizer extends SerializerAwareNormalizer implements Denormal
         }
         return $object;
     }
-    public function normalize($object, $format = null, array $context = [])
+    public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
         if (null !== $object->getAttachStdin()) {
@@ -79,7 +79,7 @@ class ExecConfigNormalizer extends SerializerAwareNormalizer implements Denormal
         }
         $value = $object->getCmd();
         if (is_array($object->getCmd())) {
-            $values = [];
+            $values = array();
             foreach ($object->getCmd() as $value_1) {
                 $values[] = $value_1;
             }

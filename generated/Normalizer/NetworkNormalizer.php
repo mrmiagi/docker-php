@@ -22,7 +22,7 @@ class NetworkNormalizer extends SerializerAwareNormalizer implements Denormalize
         }
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = [])
+    public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (empty($data)) {
             return null;
@@ -50,14 +50,14 @@ class NetworkNormalizer extends SerializerAwareNormalizer implements Denormalize
             $object->setIPAM($this->serializer->deserialize($data->{'IPAM'}, 'Docker\\API\\Model\\IPAM', 'raw', $context));
         }
         if (property_exists($data, 'Containers')) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data->{'Containers'} as $key => $value) {
                 $values[$key] = $this->serializer->deserialize($value, 'Docker\\API\\Model\\NetworkContainer', 'raw', $context);
             }
             $object->setContainers($values);
         }
         if (property_exists($data, 'Options')) {
-            $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_1 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data->{'Options'} as $key_1 => $value_1) {
                 $values_1[$key_1] = $value_1;
             }
@@ -65,7 +65,7 @@ class NetworkNormalizer extends SerializerAwareNormalizer implements Denormalize
         }
         return $object;
     }
-    public function normalize($object, $format = null, array $context = [])
+    public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
         if (null !== $object->getName()) {

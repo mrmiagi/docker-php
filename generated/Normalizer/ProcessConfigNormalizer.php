@@ -22,7 +22,7 @@ class ProcessConfigNormalizer extends SerializerAwareNormalizer implements Denor
         }
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = [])
+    public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (empty($data)) {
             return null;
@@ -49,7 +49,7 @@ class ProcessConfigNormalizer extends SerializerAwareNormalizer implements Denor
         if (property_exists($data, 'arguments')) {
             $value = $data->{'arguments'};
             if (is_array($data->{'arguments'})) {
-                $values = [];
+                $values = array();
                 foreach ($data->{'arguments'} as $value_1) {
                     $values[] = $value_1;
                 }
@@ -62,7 +62,7 @@ class ProcessConfigNormalizer extends SerializerAwareNormalizer implements Denor
         }
         return $object;
     }
-    public function normalize($object, $format = null, array $context = [])
+    public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
         if (null !== $object->getPrivileged()) {
@@ -79,7 +79,7 @@ class ProcessConfigNormalizer extends SerializerAwareNormalizer implements Denor
         }
         $value = $object->getArguments();
         if (is_array($object->getArguments())) {
-            $values = [];
+            $values = array();
             foreach ($object->getArguments() as $value_1) {
                 $values[] = $value_1;
             }

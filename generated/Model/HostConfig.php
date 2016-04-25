@@ -13,7 +13,7 @@ class HostConfig
      */
     protected $links;
     /**
-     * @var string[]
+     * @var string[]|mixed
      */
     protected $lxcConf;
     /**
@@ -175,18 +175,18 @@ class HostConfig
         return $this;
     }
     /**
-     * @return string[]
+     * @return string[]|mixed
      */
     public function getLxcConf()
     {
         return $this->lxcConf;
     }
     /**
-     * @param string[] $lxcConf
+     * @param string[]|mixed $lxcConf
      *
      * @return self
      */
-    public function setLxcConf(\ArrayObject $lxcConf = null)
+    public function setLxcConf($lxcConf = null)
     {
         $this->lxcConf = $lxcConf;
         return $this;

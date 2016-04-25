@@ -22,7 +22,7 @@ class ContainerConnectNormalizer extends SerializerAwareNormalizer implements De
         }
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = [])
+    public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (empty($data)) {
             return null;
@@ -38,7 +38,7 @@ class ContainerConnectNormalizer extends SerializerAwareNormalizer implements De
             $object->setContainer($data->{'Container'});
         }
         if (property_exists($data, 'EndpointConfig')) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data->{'EndpointConfig'} as $key => $value) {
                 $values[$key] = $this->serializer->deserialize($value, 'Docker\\API\\Model\\EndpointConfig', 'raw', $context);
             }
@@ -46,7 +46,7 @@ class ContainerConnectNormalizer extends SerializerAwareNormalizer implements De
         }
         return $object;
     }
-    public function normalize($object, $format = null, array $context = [])
+    public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
         if (null !== $object->getContainer()) {

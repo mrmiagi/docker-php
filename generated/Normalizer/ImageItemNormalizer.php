@@ -22,7 +22,7 @@ class ImageItemNormalizer extends SerializerAwareNormalizer implements Denormali
         }
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = [])
+    public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (empty($data)) {
             return null;
@@ -37,7 +37,7 @@ class ImageItemNormalizer extends SerializerAwareNormalizer implements Denormali
         if (property_exists($data, 'RepoTags')) {
             $value = $data->{'RepoTags'};
             if (is_array($data->{'RepoTags'})) {
-                $values = [];
+                $values = array();
                 foreach ($data->{'RepoTags'} as $value_1) {
                     $values[] = $value_1;
                 }
@@ -66,7 +66,7 @@ class ImageItemNormalizer extends SerializerAwareNormalizer implements Denormali
         if (property_exists($data, 'Labels')) {
             $value_2 = $data->{'Labels'};
             if (is_object($data->{'Labels'})) {
-                $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+                $values_1 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
                 foreach ($data->{'Labels'} as $key => $value_3) {
                     $values_1[$key] = $value_3;
                 }
@@ -80,7 +80,7 @@ class ImageItemNormalizer extends SerializerAwareNormalizer implements Denormali
         if (property_exists($data, 'RepoDigests')) {
             $value_4 = $data->{'RepoDigests'};
             if (is_array($data->{'RepoDigests'})) {
-                $values_2 = [];
+                $values_2 = array();
                 foreach ($data->{'RepoDigests'} as $value_5) {
                     $values_2[] = $value_5;
                 }
@@ -93,12 +93,12 @@ class ImageItemNormalizer extends SerializerAwareNormalizer implements Denormali
         }
         return $object;
     }
-    public function normalize($object, $format = null, array $context = [])
+    public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
         $value = $object->getRepoTags();
         if (is_array($object->getRepoTags())) {
-            $values = [];
+            $values = array();
             foreach ($object->getRepoTags() as $value_1) {
                 $values[] = $value_1;
             }
@@ -137,7 +137,7 @@ class ImageItemNormalizer extends SerializerAwareNormalizer implements Denormali
         $data->{'Labels'} = $value_2;
         $value_4 = $object->getRepoDigests();
         if (is_array($object->getRepoDigests())) {
-            $values_2 = [];
+            $values_2 = array();
             foreach ($object->getRepoDigests() as $value_5) {
                 $values_2[] = $value_5;
             }

@@ -22,7 +22,7 @@ class ImageHistoryItemNormalizer extends SerializerAwareNormalizer implements De
         }
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = [])
+    public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (empty($data)) {
             return null;
@@ -46,7 +46,7 @@ class ImageHistoryItemNormalizer extends SerializerAwareNormalizer implements De
         if (property_exists($data, 'Tags')) {
             $value = $data->{'Tags'};
             if (is_array($data->{'Tags'})) {
-                $values = [];
+                $values = array();
                 foreach ($data->{'Tags'} as $value_1) {
                     $values[] = $value_1;
                 }
@@ -65,7 +65,7 @@ class ImageHistoryItemNormalizer extends SerializerAwareNormalizer implements De
         }
         return $object;
     }
-    public function normalize($object, $format = null, array $context = [])
+    public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
         if (null !== $object->getId()) {
@@ -79,7 +79,7 @@ class ImageHistoryItemNormalizer extends SerializerAwareNormalizer implements De
         }
         $value = $object->getTags();
         if (is_array($object->getTags())) {
-            $values = [];
+            $values = array();
             foreach ($object->getTags() as $value_1) {
                 $values[] = $value_1;
             }

@@ -22,7 +22,7 @@ class SystemInformationNormalizer extends SerializerAwareNormalizer implements D
         }
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = [])
+    public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (empty($data)) {
             return null;
@@ -70,11 +70,11 @@ class SystemInformationNormalizer extends SerializerAwareNormalizer implements D
         if (property_exists($data, 'DriverStatus')) {
             $value = $data->{'DriverStatus'};
             if (is_array($data->{'DriverStatus'})) {
-                $values = [];
+                $values = array();
                 foreach ($data->{'DriverStatus'} as $value_1) {
                     $value_2 = $value_1;
                     if (is_array($value_1)) {
-                        $values_1 = [];
+                        $values_1 = array();
                         foreach ($value_1 as $value_3) {
                             $values_1[] = $value_3;
                         }
@@ -95,11 +95,11 @@ class SystemInformationNormalizer extends SerializerAwareNormalizer implements D
         if (property_exists($data, 'SystemStatus')) {
             $value_4 = $data->{'SystemStatus'};
             if (is_array($data->{'SystemStatus'})) {
-                $values_2 = [];
+                $values_2 = array();
                 foreach ($data->{'SystemStatus'} as $value_5) {
                     $value_6 = $value_5;
                     if (is_array($value_5)) {
-                        $values_3 = [];
+                        $values_3 = array();
                         foreach ($value_5 as $value_7) {
                             $values_3[] = $value_7;
                         }
@@ -153,7 +153,7 @@ class SystemInformationNormalizer extends SerializerAwareNormalizer implements D
         if (property_exists($data, 'Labels')) {
             $value_8 = $data->{'Labels'};
             if (is_array($data->{'Labels'})) {
-                $values_4 = [];
+                $values_4 = array();
                 foreach ($data->{'Labels'} as $value_9) {
                     $values_4[] = $value_9;
                 }
@@ -211,7 +211,7 @@ class SystemInformationNormalizer extends SerializerAwareNormalizer implements D
         }
         return $object;
     }
-    public function normalize($object, $format = null, array $context = [])
+    public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
         if (null !== $object->getArchitecture()) {
@@ -249,11 +249,11 @@ class SystemInformationNormalizer extends SerializerAwareNormalizer implements D
         }
         $value = $object->getDriverStatus();
         if (is_array($object->getDriverStatus())) {
-            $values = [];
+            $values = array();
             foreach ($object->getDriverStatus() as $value_1) {
                 $value_2 = $value_1;
                 if (is_array($value_1)) {
-                    $values_1 = [];
+                    $values_1 = array();
                     foreach ($value_1 as $value_3) {
                         $values_1[] = $value_3;
                     }
@@ -272,11 +272,11 @@ class SystemInformationNormalizer extends SerializerAwareNormalizer implements D
         $data->{'DriverStatus'} = $value;
         $value_4 = $object->getSystemStatus();
         if (is_array($object->getSystemStatus())) {
-            $values_2 = [];
+            $values_2 = array();
             foreach ($object->getSystemStatus() as $value_5) {
                 $value_6 = $value_5;
                 if (is_array($value_5)) {
-                    $values_3 = [];
+                    $values_3 = array();
                     foreach ($value_5 as $value_7) {
                         $values_3[] = $value_7;
                     }
@@ -328,7 +328,7 @@ class SystemInformationNormalizer extends SerializerAwareNormalizer implements D
         }
         $value_8 = $object->getLabels();
         if (is_array($object->getLabels())) {
-            $values_4 = [];
+            $values_4 = array();
             foreach ($object->getLabels() as $value_9) {
                 $values_4[] = $value_9;
             }

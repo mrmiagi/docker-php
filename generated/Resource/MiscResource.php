@@ -15,7 +15,7 @@ class MiscResource extends Resource
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function checkAuthentication(\Docker\API\Model\AuthConfig $authConfig, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function checkAuthentication(\Docker\API\Model\AuthConfig $authConfig, $parameters = array(), $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/auth';
@@ -34,7 +34,7 @@ class MiscResource extends Resource
      *
      * @return \Psr\Http\Message\ResponseInterface|\Docker\API\Model\SystemInformation
      */
-    public function getSystemInformation($parameters = [], $fetch = self::FETCH_OBJECT)
+    public function getSystemInformation($parameters = array(), $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/info';
@@ -58,7 +58,7 @@ class MiscResource extends Resource
      *
      * @return \Psr\Http\Message\ResponseInterface|\Docker\API\Model\Version
      */
-    public function getVersion($parameters = [], $fetch = self::FETCH_OBJECT)
+    public function getVersion($parameters = array(), $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/version';
@@ -82,7 +82,7 @@ class MiscResource extends Resource
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function ping($parameters = [], $fetch = self::FETCH_OBJECT)
+    public function ping($parameters = array(), $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/_ping';
@@ -105,7 +105,7 @@ class MiscResource extends Resource
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function getEvents($parameters = [], $fetch = self::FETCH_OBJECT)
+    public function getEvents($parameters = array(), $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $queryParam->setDefault('since', NULL);

@@ -22,7 +22,7 @@ class RegistryNormalizer extends SerializerAwareNormalizer implements Denormaliz
         }
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = [])
+    public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (empty($data)) {
             return null;
@@ -37,7 +37,7 @@ class RegistryNormalizer extends SerializerAwareNormalizer implements Denormaliz
         if (property_exists($data, 'Mirrors')) {
             $value = $data->{'Mirrors'};
             if (is_array($data->{'Mirrors'})) {
-                $values = [];
+                $values = array();
                 foreach ($data->{'Mirrors'} as $value_1) {
                     $values[] = $value_1;
                 }
@@ -59,12 +59,12 @@ class RegistryNormalizer extends SerializerAwareNormalizer implements Denormaliz
         }
         return $object;
     }
-    public function normalize($object, $format = null, array $context = [])
+    public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
         $value = $object->getMirrors();
         if (is_array($object->getMirrors())) {
-            $values = [];
+            $values = array();
             foreach ($object->getMirrors() as $value_1) {
                 $values[] = $value_1;
             }

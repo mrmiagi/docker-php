@@ -22,7 +22,7 @@ class ContainerWaitNormalizer extends SerializerAwareNormalizer implements Denor
         }
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = [])
+    public function denormalize($data, $class, $format = null, array $context = array())
     {
         if (empty($data)) {
             return null;
@@ -39,7 +39,7 @@ class ContainerWaitNormalizer extends SerializerAwareNormalizer implements Denor
         }
         return $object;
     }
-    public function normalize($object, $format = null, array $context = [])
+    public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
         if (null !== $object->getStatusCode()) {
