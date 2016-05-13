@@ -6,6 +6,7 @@ use Joli\Jane\Reference\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
+
 class ResourceUpdateNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,16 +14,20 @@ class ResourceUpdateNormalizer extends SerializerAwareNormalizer implements Deno
         if ($type !== 'Docker\\API\\Model\\ResourceUpdate') {
             return false;
         }
+
         return true;
     }
+
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\ResourceUpdate) {
             return true;
         }
+
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = array())
+
+    public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (empty($data)) {
             return null;
@@ -64,9 +69,11 @@ class ResourceUpdateNormalizer extends SerializerAwareNormalizer implements Deno
         if (property_exists($data, 'KernelMemory')) {
             $object->setKernelMemory($data->{'KernelMemory'});
         }
+
         return $object;
     }
-    public function normalize($object, $format = null, array $context = array())
+
+    public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
         if (null !== $object->getBlkioWeight()) {
@@ -99,6 +106,7 @@ class ResourceUpdateNormalizer extends SerializerAwareNormalizer implements Deno
         if (null !== $object->getKernelMemory()) {
             $data->{'KernelMemory'} = $object->getKernelMemory();
         }
+
         return $data;
     }
 }

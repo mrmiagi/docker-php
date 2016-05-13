@@ -9,9 +9,10 @@ class LogConfig
      */
     protected $type;
     /**
-     * @var string[]
+     * @var string[]|null
      */
     protected $config;
+
     /**
      * @return string
      */
@@ -19,6 +20,7 @@ class LogConfig
     {
         return $this->type;
     }
+
     /**
      * @param string $type
      *
@@ -27,23 +29,27 @@ class LogConfig
     public function setType($type = null)
     {
         $this->type = $type;
+
         return $this;
     }
+
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getConfig()
     {
         return $this->config;
     }
+
     /**
-     * @param string[] $config
+     * @param string[]|null $config
      *
      * @return self
      */
-    public function setConfig(\ArrayObject $config = null)
+    public function setConfig($config = null)
     {
         $this->config = $config;
+
         return $this;
     }
 }

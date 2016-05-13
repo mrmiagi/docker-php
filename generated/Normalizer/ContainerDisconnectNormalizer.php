@@ -6,6 +6,7 @@ use Joli\Jane\Reference\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
+
 class ContainerDisconnectNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,16 +14,20 @@ class ContainerDisconnectNormalizer extends SerializerAwareNormalizer implements
         if ($type !== 'Docker\\API\\Model\\ContainerDisconnect') {
             return false;
         }
+
         return true;
     }
+
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\ContainerDisconnect) {
             return true;
         }
+
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = array())
+
+    public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (empty($data)) {
             return null;
@@ -40,9 +45,11 @@ class ContainerDisconnectNormalizer extends SerializerAwareNormalizer implements
         if (property_exists($data, 'Force')) {
             $object->setForce($data->{'Force'});
         }
+
         return $object;
     }
-    public function normalize($object, $format = null, array $context = array())
+
+    public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
         if (null !== $object->getContainer()) {
@@ -51,6 +58,7 @@ class ContainerDisconnectNormalizer extends SerializerAwareNormalizer implements
         if (null !== $object->getForce()) {
             $data->{'Force'} = $object->getForce();
         }
+
         return $data;
     }
 }

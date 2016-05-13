@@ -20,6 +20,7 @@ class NetworkCreateConfig
      * @var bool
      */
     protected $internal;
+
     /**
      * @return string
      */
@@ -27,6 +28,7 @@ class NetworkCreateConfig
     {
         return $this->name;
     }
+
     /**
      * @param string $name
      *
@@ -35,8 +37,10 @@ class NetworkCreateConfig
     public function setName($name = null)
     {
         $this->name = $name;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -44,6 +48,7 @@ class NetworkCreateConfig
     {
         return $this->driver;
     }
+
     /**
      * @param string $driver
      *
@@ -52,8 +57,10 @@ class NetworkCreateConfig
     public function setDriver($driver = null)
     {
         $this->driver = $driver;
+
         return $this;
     }
+
     /**
      * @return IPAM
      */
@@ -61,6 +68,7 @@ class NetworkCreateConfig
     {
         return $this->iPAM;
     }
+
     /**
      * @param IPAM $iPAM
      *
@@ -69,8 +77,10 @@ class NetworkCreateConfig
     public function setIPAM(IPAM $iPAM = null)
     {
         $this->iPAM = $iPAM;
+
         return $this;
     }
+
     /**
      * @return bool
      */
@@ -78,6 +88,7 @@ class NetworkCreateConfig
     {
         return $this->internal;
     }
+
     /**
      * @param bool $internal
      *
@@ -86,6 +97,7 @@ class NetworkCreateConfig
     public function setInternal($internal = null)
     {
         $this->internal = $internal;
+
         return $this;
     }
 }

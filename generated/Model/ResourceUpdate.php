@@ -44,6 +44,7 @@ class ResourceUpdate
      * @var int
      */
     protected $kernelMemory;
+
     /**
      * @return int
      */
@@ -51,6 +52,7 @@ class ResourceUpdate
     {
         return $this->blkioWeight;
     }
+
     /**
      * @param int $blkioWeight
      *
@@ -59,8 +61,10 @@ class ResourceUpdate
     public function setBlkioWeight($blkioWeight = null)
     {
         $this->blkioWeight = $blkioWeight;
+
         return $this;
     }
+
     /**
      * @return int
      */
@@ -68,6 +72,7 @@ class ResourceUpdate
     {
         return $this->cpuShares;
     }
+
     /**
      * @param int $cpuShares
      *
@@ -76,8 +81,10 @@ class ResourceUpdate
     public function setCpuShares($cpuShares = null)
     {
         $this->cpuShares = $cpuShares;
+
         return $this;
     }
+
     /**
      * @return int
      */
@@ -85,6 +92,7 @@ class ResourceUpdate
     {
         return $this->cpuPeriod;
     }
+
     /**
      * @param int $cpuPeriod
      *
@@ -93,8 +101,10 @@ class ResourceUpdate
     public function setCpuPeriod($cpuPeriod = null)
     {
         $this->cpuPeriod = $cpuPeriod;
+
         return $this;
     }
+
     /**
      * @return int
      */
@@ -102,6 +112,7 @@ class ResourceUpdate
     {
         return $this->cpuQuota;
     }
+
     /**
      * @param int $cpuQuota
      *
@@ -110,8 +121,10 @@ class ResourceUpdate
     public function setCpuQuota($cpuQuota = null)
     {
         $this->cpuQuota = $cpuQuota;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -119,6 +132,7 @@ class ResourceUpdate
     {
         return $this->cpusetCpus;
     }
+
     /**
      * @param string $cpusetCpus
      *
@@ -127,8 +141,10 @@ class ResourceUpdate
     public function setCpusetCpus($cpusetCpus = null)
     {
         $this->cpusetCpus = $cpusetCpus;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -136,6 +152,7 @@ class ResourceUpdate
     {
         return $this->cpusetMems;
     }
+
     /**
      * @param string $cpusetMems
      *
@@ -144,8 +161,10 @@ class ResourceUpdate
     public function setCpusetMems($cpusetMems = null)
     {
         $this->cpusetMems = $cpusetMems;
+
         return $this;
     }
+
     /**
      * @return int
      */
@@ -153,6 +172,7 @@ class ResourceUpdate
     {
         return $this->memory;
     }
+
     /**
      * @param int $memory
      *
@@ -161,8 +181,10 @@ class ResourceUpdate
     public function setMemory($memory = null)
     {
         $this->memory = $memory;
+
         return $this;
     }
+
     /**
      * @return int
      */
@@ -170,6 +192,7 @@ class ResourceUpdate
     {
         return $this->memorySwap;
     }
+
     /**
      * @param int $memorySwap
      *
@@ -178,8 +201,10 @@ class ResourceUpdate
     public function setMemorySwap($memorySwap = null)
     {
         $this->memorySwap = $memorySwap;
+
         return $this;
     }
+
     /**
      * @return int
      */
@@ -187,6 +212,7 @@ class ResourceUpdate
     {
         return $this->memoryReservation;
     }
+
     /**
      * @param int $memoryReservation
      *
@@ -195,8 +221,10 @@ class ResourceUpdate
     public function setMemoryReservation($memoryReservation = null)
     {
         $this->memoryReservation = $memoryReservation;
+
         return $this;
     }
+
     /**
      * @return int
      */
@@ -204,6 +232,7 @@ class ResourceUpdate
     {
         return $this->kernelMemory;
     }
+
     /**
      * @param int $kernelMemory
      *
@@ -212,6 +241,7 @@ class ResourceUpdate
     public function setKernelMemory($kernelMemory = null)
     {
         $this->kernelMemory = $kernelMemory;
+
         return $this;
     }
 }

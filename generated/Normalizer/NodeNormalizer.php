@@ -6,6 +6,7 @@ use Joli\Jane\Reference\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
+
 class NodeNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,16 +14,20 @@ class NodeNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         if ($type !== 'Docker\\API\\Model\\Node') {
             return false;
         }
+
         return true;
     }
+
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\Node) {
             return true;
         }
+
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = array())
+
+    public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (empty($data)) {
             return null;
@@ -46,9 +51,11 @@ class NodeNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         if (property_exists($data, 'Name')) {
             $object->setName($data->{'Name'});
         }
+
         return $object;
     }
-    public function normalize($object, $format = null, array $context = array())
+
+    public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
         if (null !== $object->getId()) {
@@ -63,6 +70,7 @@ class NodeNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         if (null !== $object->getName()) {
             $data->{'Name'} = $object->getName();
         }
+
         return $data;
     }
 }

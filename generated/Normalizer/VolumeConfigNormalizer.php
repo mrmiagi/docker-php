@@ -6,6 +6,7 @@ use Joli\Jane\Reference\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
+
 class VolumeConfigNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,16 +14,20 @@ class VolumeConfigNormalizer extends SerializerAwareNormalizer implements Denorm
         if ($type !== 'Docker\\API\\Model\\VolumeConfig') {
             return false;
         }
+
         return true;
     }
+
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\VolumeConfig) {
             return true;
         }
+
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = array())
+
+    public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (empty($data)) {
             return null;
@@ -41,15 +46,17 @@ class VolumeConfigNormalizer extends SerializerAwareNormalizer implements Denorm
             $object->setDriver($data->{'Driver'});
         }
         if (property_exists($data, 'DriverOpts')) {
-            $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data->{'DriverOpts'} as $key => $value) {
                 $values[$key] = $value;
             }
             $object->setDriverOpts($values);
         }
+
         return $object;
     }
-    public function normalize($object, $format = null, array $context = array())
+
+    public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
         if (null !== $object->getName()) {
@@ -65,6 +72,7 @@ class VolumeConfigNormalizer extends SerializerAwareNormalizer implements Denorm
             }
             $data->{'DriverOpts'} = $values;
         }
+
         return $data;
     }
 }

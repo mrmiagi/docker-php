@@ -96,6 +96,7 @@ class Container
      * @var Node
      */
     protected $node;
+
     /**
      * @return string
      */
@@ -103,6 +104,7 @@ class Container
     {
         return $this->appArmorProfile;
     }
+
     /**
      * @param string $appArmorProfile
      *
@@ -111,8 +113,10 @@ class Container
     public function setAppArmorProfile($appArmorProfile = null)
     {
         $this->appArmorProfile = $appArmorProfile;
+
         return $this;
     }
+
     /**
      * @return string[]|null
      */
@@ -120,6 +124,7 @@ class Container
     {
         return $this->args;
     }
+
     /**
      * @param string[]|null $args
      *
@@ -128,8 +133,10 @@ class Container
     public function setArgs($args = null)
     {
         $this->args = $args;
+
         return $this;
     }
+
     /**
      * @return ContainerConfig
      */
@@ -137,6 +144,7 @@ class Container
     {
         return $this->config;
     }
+
     /**
      * @param ContainerConfig $config
      *
@@ -145,8 +153,10 @@ class Container
     public function setConfig(ContainerConfig $config = null)
     {
         $this->config = $config;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -154,6 +164,7 @@ class Container
     {
         return $this->created;
     }
+
     /**
      * @param string $created
      *
@@ -162,8 +173,10 @@ class Container
     public function setCreated($created = null)
     {
         $this->created = $created;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -171,6 +184,7 @@ class Container
     {
         return $this->driver;
     }
+
     /**
      * @param string $driver
      *
@@ -179,8 +193,10 @@ class Container
     public function setDriver($driver = null)
     {
         $this->driver = $driver;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -188,6 +204,7 @@ class Container
     {
         return $this->execDriver;
     }
+
     /**
      * @param string $execDriver
      *
@@ -196,8 +213,10 @@ class Container
     public function setExecDriver($execDriver = null)
     {
         $this->execDriver = $execDriver;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -205,6 +224,7 @@ class Container
     {
         return $this->execIDs;
     }
+
     /**
      * @param string $execIDs
      *
@@ -213,8 +233,10 @@ class Container
     public function setExecIDs($execIDs = null)
     {
         $this->execIDs = $execIDs;
+
         return $this;
     }
+
     /**
      * @return HostConfig
      */
@@ -222,6 +244,7 @@ class Container
     {
         return $this->hostConfig;
     }
+
     /**
      * @param HostConfig $hostConfig
      *
@@ -230,8 +253,10 @@ class Container
     public function setHostConfig(HostConfig $hostConfig = null)
     {
         $this->hostConfig = $hostConfig;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -239,6 +264,7 @@ class Container
     {
         return $this->hostnamePath;
     }
+
     /**
      * @param string $hostnamePath
      *
@@ -247,8 +273,10 @@ class Container
     public function setHostnamePath($hostnamePath = null)
     {
         $this->hostnamePath = $hostnamePath;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -256,6 +284,7 @@ class Container
     {
         return $this->hostsPath;
     }
+
     /**
      * @param string $hostsPath
      *
@@ -264,8 +293,10 @@ class Container
     public function setHostsPath($hostsPath = null)
     {
         $this->hostsPath = $hostsPath;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -273,6 +304,7 @@ class Container
     {
         return $this->logPath;
     }
+
     /**
      * @param string $logPath
      *
@@ -281,8 +313,10 @@ class Container
     public function setLogPath($logPath = null)
     {
         $this->logPath = $logPath;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -290,6 +324,7 @@ class Container
     {
         return $this->id;
     }
+
     /**
      * @param string $id
      *
@@ -298,8 +333,10 @@ class Container
     public function setId($id = null)
     {
         $this->id = $id;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -307,6 +344,7 @@ class Container
     {
         return $this->image;
     }
+
     /**
      * @param string $image
      *
@@ -315,8 +353,10 @@ class Container
     public function setImage($image = null)
     {
         $this->image = $image;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -324,6 +364,7 @@ class Container
     {
         return $this->mountLabel;
     }
+
     /**
      * @param string $mountLabel
      *
@@ -332,8 +373,10 @@ class Container
     public function setMountLabel($mountLabel = null)
     {
         $this->mountLabel = $mountLabel;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -341,6 +384,7 @@ class Container
     {
         return $this->name;
     }
+
     /**
      * @param string $name
      *
@@ -349,8 +393,10 @@ class Container
     public function setName($name = null)
     {
         $this->name = $name;
+
         return $this;
     }
+
     /**
      * @return NetworkConfig
      */
@@ -358,6 +404,7 @@ class Container
     {
         return $this->networkSettings;
     }
+
     /**
      * @param NetworkConfig $networkSettings
      *
@@ -366,8 +413,10 @@ class Container
     public function setNetworkSettings(NetworkConfig $networkSettings = null)
     {
         $this->networkSettings = $networkSettings;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -375,6 +424,7 @@ class Container
     {
         return $this->path;
     }
+
     /**
      * @param string $path
      *
@@ -383,8 +433,10 @@ class Container
     public function setPath($path = null)
     {
         $this->path = $path;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -392,6 +444,7 @@ class Container
     {
         return $this->processLabel;
     }
+
     /**
      * @param string $processLabel
      *
@@ -400,8 +453,10 @@ class Container
     public function setProcessLabel($processLabel = null)
     {
         $this->processLabel = $processLabel;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -409,6 +464,7 @@ class Container
     {
         return $this->resolvConfPath;
     }
+
     /**
      * @param string $resolvConfPath
      *
@@ -417,8 +473,10 @@ class Container
     public function setResolvConfPath($resolvConfPath = null)
     {
         $this->resolvConfPath = $resolvConfPath;
+
         return $this;
     }
+
     /**
      * @return int
      */
@@ -426,6 +484,7 @@ class Container
     {
         return $this->restartCount;
     }
+
     /**
      * @param int $restartCount
      *
@@ -434,8 +493,10 @@ class Container
     public function setRestartCount($restartCount = null)
     {
         $this->restartCount = $restartCount;
+
         return $this;
     }
+
     /**
      * @return ContainerState
      */
@@ -443,6 +504,7 @@ class Container
     {
         return $this->state;
     }
+
     /**
      * @param ContainerState $state
      *
@@ -451,8 +513,10 @@ class Container
     public function setState(ContainerState $state = null)
     {
         $this->state = $state;
+
         return $this;
     }
+
     /**
      * @return Mount[]|null
      */
@@ -460,6 +524,7 @@ class Container
     {
         return $this->mounts;
     }
+
     /**
      * @param Mount[]|null $mounts
      *
@@ -468,8 +533,10 @@ class Container
     public function setMounts($mounts = null)
     {
         $this->mounts = $mounts;
+
         return $this;
     }
+
     /**
      * @return Node
      */
@@ -477,6 +544,7 @@ class Container
     {
         return $this->node;
     }
+
     /**
      * @param Node $node
      *
@@ -485,6 +553,7 @@ class Container
     public function setNode(Node $node = null)
     {
         $this->node = $node;
+
         return $this;
     }
 }

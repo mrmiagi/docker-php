@@ -32,6 +32,7 @@ class Network
      * @var string[]
      */
     protected $options;
+
     /**
      * @return string
      */
@@ -39,6 +40,7 @@ class Network
     {
         return $this->name;
     }
+
     /**
      * @param string $name
      *
@@ -47,8 +49,10 @@ class Network
     public function setName($name = null)
     {
         $this->name = $name;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -56,6 +60,7 @@ class Network
     {
         return $this->id;
     }
+
     /**
      * @param string $id
      *
@@ -64,8 +69,10 @@ class Network
     public function setId($id = null)
     {
         $this->id = $id;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -73,6 +80,7 @@ class Network
     {
         return $this->scope;
     }
+
     /**
      * @param string $scope
      *
@@ -81,8 +89,10 @@ class Network
     public function setScope($scope = null)
     {
         $this->scope = $scope;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -90,6 +100,7 @@ class Network
     {
         return $this->driver;
     }
+
     /**
      * @param string $driver
      *
@@ -98,8 +109,10 @@ class Network
     public function setDriver($driver = null)
     {
         $this->driver = $driver;
+
         return $this;
     }
+
     /**
      * @return IPAM
      */
@@ -107,6 +120,7 @@ class Network
     {
         return $this->iPAM;
     }
+
     /**
      * @param IPAM $iPAM
      *
@@ -115,8 +129,10 @@ class Network
     public function setIPAM(IPAM $iPAM = null)
     {
         $this->iPAM = $iPAM;
+
         return $this;
     }
+
     /**
      * @return NetworkContainer[]
      */
@@ -124,6 +140,7 @@ class Network
     {
         return $this->containers;
     }
+
     /**
      * @param NetworkContainer[] $containers
      *
@@ -132,8 +149,10 @@ class Network
     public function setContainers(\ArrayObject $containers = null)
     {
         $this->containers = $containers;
+
         return $this;
     }
+
     /**
      * @return string[]
      */
@@ -141,6 +160,7 @@ class Network
     {
         return $this->options;
     }
+
     /**
      * @param string[] $options
      *
@@ -149,6 +169,7 @@ class Network
     public function setOptions(\ArrayObject $options = null)
     {
         $this->options = $options;
+
         return $this;
     }
 }

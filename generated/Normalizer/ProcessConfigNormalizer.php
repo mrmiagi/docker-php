@@ -6,6 +6,7 @@ use Joli\Jane\Reference\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
+
 class ProcessConfigNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,16 +14,20 @@ class ProcessConfigNormalizer extends SerializerAwareNormalizer implements Denor
         if ($type !== 'Docker\\API\\Model\\ProcessConfig') {
             return false;
         }
+
         return true;
     }
+
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\ProcessConfig) {
             return true;
         }
+
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = array())
+
+    public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (empty($data)) {
             return null;
@@ -49,7 +54,7 @@ class ProcessConfigNormalizer extends SerializerAwareNormalizer implements Denor
         if (property_exists($data, 'arguments')) {
             $value = $data->{'arguments'};
             if (is_array($data->{'arguments'})) {
-                $values = array();
+                $values = [];
                 foreach ($data->{'arguments'} as $value_1) {
                     $values[] = $value_1;
                 }
@@ -60,9 +65,11 @@ class ProcessConfigNormalizer extends SerializerAwareNormalizer implements Denor
             }
             $object->setArguments($value);
         }
+
         return $object;
     }
-    public function normalize($object, $format = null, array $context = array())
+
+    public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
         if (null !== $object->getPrivileged()) {
@@ -79,7 +86,7 @@ class ProcessConfigNormalizer extends SerializerAwareNormalizer implements Denor
         }
         $value = $object->getArguments();
         if (is_array($object->getArguments())) {
-            $values = array();
+            $values = [];
             foreach ($object->getArguments() as $value_1) {
                 $values[] = $value_1;
             }
@@ -89,6 +96,7 @@ class ProcessConfigNormalizer extends SerializerAwareNormalizer implements Denor
             $value = $object->getArguments();
         }
         $data->{'arguments'} = $value;
+
         return $data;
     }
 }

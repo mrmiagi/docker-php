@@ -20,6 +20,7 @@ class Mount
      * @var bool
      */
     protected $rW;
+
     /**
      * @return string
      */
@@ -27,6 +28,7 @@ class Mount
     {
         return $this->source;
     }
+
     /**
      * @param string $source
      *
@@ -35,8 +37,10 @@ class Mount
     public function setSource($source = null)
     {
         $this->source = $source;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -44,6 +48,7 @@ class Mount
     {
         return $this->destination;
     }
+
     /**
      * @param string $destination
      *
@@ -52,8 +57,10 @@ class Mount
     public function setDestination($destination = null)
     {
         $this->destination = $destination;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -61,6 +68,7 @@ class Mount
     {
         return $this->mode;
     }
+
     /**
      * @param string $mode
      *
@@ -69,8 +77,10 @@ class Mount
     public function setMode($mode = null)
     {
         $this->mode = $mode;
+
         return $this;
     }
+
     /**
      * @return bool
      */
@@ -78,6 +88,7 @@ class Mount
     {
         return $this->rW;
     }
+
     /**
      * @param bool $rW
      *
@@ -86,6 +97,7 @@ class Mount
     public function setRW($rW = null)
     {
         $this->rW = $rW;
+
         return $this;
     }
 }

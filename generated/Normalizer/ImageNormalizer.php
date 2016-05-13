@@ -6,6 +6,7 @@ use Joli\Jane\Reference\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
+
 class ImageNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,16 +14,20 @@ class ImageNormalizer extends SerializerAwareNormalizer implements DenormalizerI
         if ($type !== 'Docker\\API\\Model\\Image') {
             return false;
         }
+
         return true;
     }
+
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\Image) {
             return true;
         }
+
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = array())
+
+    public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (empty($data)) {
             return null;
@@ -76,7 +81,7 @@ class ImageNormalizer extends SerializerAwareNormalizer implements DenormalizerI
         if (property_exists($data, 'RepoDigests')) {
             $value = $data->{'RepoDigests'};
             if (is_array($data->{'RepoDigests'})) {
-                $values = array();
+                $values = [];
                 foreach ($data->{'RepoDigests'} as $value_1) {
                     $values[] = $value_1;
                 }
@@ -90,7 +95,7 @@ class ImageNormalizer extends SerializerAwareNormalizer implements DenormalizerI
         if (property_exists($data, 'RepoTags')) {
             $value_2 = $data->{'RepoTags'};
             if (is_array($data->{'RepoTags'})) {
-                $values_1 = array();
+                $values_1 = [];
                 foreach ($data->{'RepoTags'} as $value_3) {
                     $values_1[] = $value_3;
                 }
@@ -104,9 +109,11 @@ class ImageNormalizer extends SerializerAwareNormalizer implements DenormalizerI
         if (property_exists($data, 'Config')) {
             $object->setConfig($this->serializer->deserialize($data->{'Config'}, 'Docker\\API\\Model\\ContainerConfig', 'raw', $context));
         }
+
         return $object;
     }
-    public function normalize($object, $format = null, array $context = array())
+
+    public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
         if (null !== $object->getId()) {
@@ -150,7 +157,7 @@ class ImageNormalizer extends SerializerAwareNormalizer implements DenormalizerI
         }
         $value = $object->getRepoDigests();
         if (is_array($object->getRepoDigests())) {
-            $values = array();
+            $values = [];
             foreach ($object->getRepoDigests() as $value_1) {
                 $values[] = $value_1;
             }
@@ -160,9 +167,9 @@ class ImageNormalizer extends SerializerAwareNormalizer implements DenormalizerI
             $value = $object->getRepoDigests();
         }
         $data->{'RepoDigests'} = $value;
-        $value_2 = $object->getRepoTags();
+        $value_2               = $object->getRepoTags();
         if (is_array($object->getRepoTags())) {
-            $values_1 = array();
+            $values_1 = [];
             foreach ($object->getRepoTags() as $value_3) {
                 $values_1[] = $value_3;
             }
@@ -175,6 +182,7 @@ class ImageNormalizer extends SerializerAwareNormalizer implements DenormalizerI
         if (null !== $object->getConfig()) {
             $data->{'Config'} = $this->serializer->serialize($object->getConfig(), 'raw', $context);
         }
+
         return $data;
     }
 }

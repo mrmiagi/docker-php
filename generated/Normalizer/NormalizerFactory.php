@@ -2,13 +2,14 @@
 
 namespace Docker\API\Normalizer;
 
-use Joli\Jane\Normalizer\ReferenceNormalizer;
 use Joli\Jane\Normalizer\NormalizerArray;
+use Joli\Jane\Normalizer\ReferenceNormalizer;
+
 class NormalizerFactory
 {
     public static function create()
     {
-        $normalizers = array();
+        $normalizers   = [];
         $normalizers[] = new ReferenceNormalizer();
         $normalizers[] = new NormalizerArray();
         $normalizers[] = new VersionNormalizer();
@@ -67,6 +68,7 @@ class NormalizerFactory
         $normalizers[] = new EventNormalizer();
         $normalizers[] = new ResourceUpdateNormalizer();
         $normalizers[] = new ContainerUpdateResultNormalizer();
+
         return $normalizers;
     }
 }
