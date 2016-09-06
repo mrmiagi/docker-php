@@ -7,96 +7,192 @@ class Node
     /**
      * @var string
      */
-    protected $id;
+    protected $iD;
     /**
-     * @var string
+     * @var NodeVersion
      */
-    protected $ip;
+    protected $version;
     /**
-     * @var string
+     * @var \DateTime
      */
-    protected $addr;
+    protected $createdAt;
     /**
-     * @var string
+     * @var \DateTime
      */
-    protected $name;
+    protected $updatedAt;
+    /**
+     * @var NodeSpec
+     */
+    protected $spec;
+    /**
+     * @var NodeDescription
+     */
+    protected $description;
+    /**
+     * @var NodeStatus
+     */
+    protected $status;
+    /**
+     * @var NodeManagerStatus
+     */
+    protected $managerStatus;
 
     /**
      * @return string
      */
-    public function getId()
+    public function getID()
     {
-        return $this->id;
+        return $this->iD;
     }
 
     /**
-     * @param string $id
+     * @param string $iD
      *
      * @return self
      */
-    public function setId($id = null)
+    public function setID($iD = null)
     {
-        $this->id = $id;
+        $this->iD = $iD;
 
         return $this;
     }
 
     /**
-     * @return string
+     * @return NodeVersion
      */
-    public function getIp()
+    public function getVersion()
     {
-        return $this->ip;
+        return $this->version;
     }
 
     /**
-     * @param string $ip
+     * @param NodeVersion $version
      *
      * @return self
      */
-    public function setIp($ip = null)
+    public function setVersion(NodeVersion $version = null)
     {
-        $this->ip = $ip;
+        $this->version = $version;
 
         return $this;
     }
 
     /**
-     * @return string
+     * @return \DateTime
      */
-    public function getAddr()
+    public function getCreatedAt()
     {
-        return $this->addr;
+        return $this->createdAt;
     }
 
     /**
-     * @param string $addr
+     * @param \DateTime $createdAt
      *
      * @return self
      */
-    public function setAddr($addr = null)
+    public function setCreatedAt(\DateTime $createdAt = null)
     {
-        $this->addr = $addr;
+        $this->createdAt = $createdAt;
 
         return $this;
     }
 
     /**
-     * @return string
+     * @return \DateTime
      */
-    public function getName()
+    public function getUpdatedAt()
     {
-        return $this->name;
+        return $this->updatedAt;
     }
 
     /**
-     * @param string $name
+     * @param \DateTime $updatedAt
      *
      * @return self
      */
-    public function setName($name = null)
+    public function setUpdatedAt(\DateTime $updatedAt = null)
     {
-        $this->name = $name;
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * @return NodeSpec
+     */
+    public function getSpec()
+    {
+        return $this->spec;
+    }
+
+    /**
+     * @param NodeSpec $spec
+     *
+     * @return self
+     */
+    public function setSpec(NodeSpec $spec = null)
+    {
+        $this->spec = $spec;
+
+        return $this;
+    }
+
+    /**
+     * @return NodeDescription
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param NodeDescription $description
+     *
+     * @return self
+     */
+    public function setDescription(NodeDescription $description = null)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return NodeStatus
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param NodeStatus $status
+     *
+     * @return self
+     */
+    public function setStatus(NodeStatus $status = null)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * @return NodeManagerStatus
+     */
+    public function getManagerStatus()
+    {
+        return $this->managerStatus;
+    }
+
+    /**
+     * @param NodeManagerStatus $managerStatus
+     *
+     * @return self
+     */
+    public function setManagerStatus(NodeManagerStatus $managerStatus = null)
+    {
+        $this->managerStatus = $managerStatus;
 
         return $this;
     }

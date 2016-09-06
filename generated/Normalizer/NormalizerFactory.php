@@ -2,16 +2,13 @@
 
 namespace Docker\API\Normalizer;
 
-use Joli\Jane\Normalizer\NormalizerArray;
-use Joli\Jane\Normalizer\ReferenceNormalizer;
-
 class NormalizerFactory
 {
     public static function create()
     {
         $normalizers   = [];
-        $normalizers[] = new ReferenceNormalizer();
-        $normalizers[] = new NormalizerArray();
+        $normalizers[] = new \Joli\Jane\Runtime\Normalizer\ReferenceNormalizer();
+        $normalizers[] = new \Joli\Jane\Runtime\Normalizer\ArrayDenormalizer();
         $normalizers[] = new VersionNormalizer();
         $normalizers[] = new PortNormalizer();
         $normalizers[] = new MountNormalizer();
@@ -20,11 +17,14 @@ class NormalizerFactory
         $normalizers[] = new DeviceNormalizer();
         $normalizers[] = new RestartPolicyNormalizer();
         $normalizers[] = new PortBindingNormalizer();
-        $normalizers[] = new NodeNormalizer();
         $normalizers[] = new HostConfigNormalizer();
         $normalizers[] = new DeviceWeightNormalizer();
         $normalizers[] = new DeviceRateNormalizer();
+        $normalizers[] = new ContainerInfoNormalizer();
         $normalizers[] = new ContainerConfigNormalizer();
+        $normalizers[] = new NetworkingConfigNormalizer();
+        $normalizers[] = new EndpointSettingsNormalizer();
+        $normalizers[] = new EndpointIPAMConfigNormalizer();
         $normalizers[] = new NetworkConfigNormalizer();
         $normalizers[] = new ContainerNetworkNormalizer();
         $normalizers[] = new ContainerStateNormalizer();
@@ -69,6 +69,57 @@ class NormalizerFactory
         $normalizers[] = new ResourceUpdateNormalizer();
         $normalizers[] = new ContainerUpdateResultNormalizer();
         $normalizers[] = new AuthResultNormalizer();
+        $normalizers[] = new ContainerNodeNormalizer();
+        $normalizers[] = new NodeNormalizer();
+        $normalizers[] = new NodeVersionNormalizer();
+        $normalizers[] = new NodeSpecNormalizer();
+        $normalizers[] = new NodeDescriptionNormalizer();
+        $normalizers[] = new NodeStatusNormalizer();
+        $normalizers[] = new NodeManagerStatusNormalizer();
+        $normalizers[] = new NodePlatformNormalizer();
+        $normalizers[] = new NodeResourcesNormalizer();
+        $normalizers[] = new NodeEngineNormalizer();
+        $normalizers[] = new NodePluginNormalizer();
+        $normalizers[] = new SwarmConfigNormalizer();
+        $normalizers[] = new SwarmConfigSpecNormalizer();
+        $normalizers[] = new SwarmConfigSpecOrchestrationNormalizer();
+        $normalizers[] = new SwarmConfigSpecRaftNormalizer();
+        $normalizers[] = new SwarmConfigSpecDispatcherNormalizer();
+        $normalizers[] = new SwarmConfigSpecCAConfigNormalizer();
+        $normalizers[] = new SwarmConfigSpecCAConfigExternalCANormalizer();
+        $normalizers[] = new SwarmJoinConfigNormalizer();
+        $normalizers[] = new SwarmUpdateConfigNormalizer();
+        $normalizers[] = new SwarmJoinTokensNormalizer();
+        $normalizers[] = new TaskNormalizer();
+        $normalizers[] = new TaskSpecNormalizer();
+        $normalizers[] = new TaskStatusNormalizer();
+        $normalizers[] = new NetworkAttachmentNormalizer();
+        $normalizers[] = new SwarmNetworkNormalizer();
+        $normalizers[] = new SwarmNetworkSpecNormalizer();
+        $normalizers[] = new SwarmIPAMOptionsNormalizer();
+        $normalizers[] = new TaskSpecResourceRequirementsNormalizer();
+        $normalizers[] = new TaskSpecRestartPolicyNormalizer();
+        $normalizers[] = new TaskSpecPlacementNormalizer();
+        $normalizers[] = new AnnotationsNormalizer();
+        $normalizers[] = new EndpointNormalizer();
+        $normalizers[] = new EndpointSpecNormalizer();
+        $normalizers[] = new PortConfigNormalizer();
+        $normalizers[] = new EndpointVirtualIPNormalizer();
+        $normalizers[] = new ContainerSpecNormalizer();
+        $normalizers[] = new ContainerSpecMountNormalizer();
+        $normalizers[] = new ContainerSpecMountBindOptionsNormalizer();
+        $normalizers[] = new ContainerSpecMountVolumeOptionsNormalizer();
+        $normalizers[] = new ContainerStatusNormalizer();
+        $normalizers[] = new DriverNormalizer();
+        $normalizers[] = new ServiceNormalizer();
+        $normalizers[] = new UpdateStatusNormalizer();
+        $normalizers[] = new ServiceSpecNormalizer();
+        $normalizers[] = new UpdateConfigNormalizer();
+        $normalizers[] = new NetworkAttachmentConfigNormalizer();
+        $normalizers[] = new ServiceSpecModeNormalizer();
+        $normalizers[] = new ReplicatedServiceNormalizer();
+        $normalizers[] = new GlobalServiceNormalizer();
+        $normalizers[] = new ServiceCreateResponseNormalizer();
 
         return $normalizers;
     }

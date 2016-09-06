@@ -2,7 +2,7 @@
 
 namespace Docker\API\Normalizer;
 
-use Joli\Jane\Reference\Reference;
+use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
@@ -29,9 +29,6 @@ class NetworkCreateConfigNormalizer extends SerializerAwareNormalizer implements
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (empty($data)) {
-            return null;
-        }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['rootSchema'] ?: null);
         }
@@ -65,11 +62,18 @@ class NetworkCreateConfigNormalizer extends SerializerAwareNormalizer implements
             $object->setOptions($values);
         }
         if (property_exists($data, 'Labels')) {
-            $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-            foreach ($data->{'Labels'} as $key_1 => $value_1) {
-                $values_1[$key_1] = $value_1;
+            $value_1 = $data->{'Labels'};
+            if (is_object($data->{'Labels'})) {
+                $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+                foreach ($data->{'Labels'} as $key_1 => $value_2) {
+                    $values_1[$key_1] = $value_2;
+                }
+                $value_1 = $values_1;
             }
-            $object->setLabels($values_1);
+            if (is_null($data->{'Labels'})) {
+                $value_1 = $data->{'Labels'};
+            }
+            $object->setLabels($value_1);
         }
 
         return $object;
@@ -103,13 +107,18 @@ class NetworkCreateConfigNormalizer extends SerializerAwareNormalizer implements
             }
             $data->{'Options'} = $values;
         }
-        if (null !== $object->getLabels()) {
+        $value_1 = $object->getLabels();
+        if (is_object($object->getLabels())) {
             $values_1 = new \stdClass();
-            foreach ($object->getLabels() as $key_1 => $value_1) {
-                $values_1->{$key_1} = $value_1;
+            foreach ($object->getLabels() as $key_1 => $value_2) {
+                $values_1->{$key_1} = $value_2;
             }
-            $data->{'Labels'} = $values_1;
+            $value_1 = $values_1;
         }
+        if (is_null($object->getLabels())) {
+            $value_1 = $object->getLabels();
+        }
+        $data->{'Labels'} = $value_1;
 
         return $data;
     }

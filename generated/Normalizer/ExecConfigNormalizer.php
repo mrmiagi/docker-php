@@ -2,7 +2,7 @@
 
 namespace Docker\API\Normalizer;
 
-use Joli\Jane\Reference\Reference;
+use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
@@ -29,9 +29,6 @@ class ExecConfigNormalizer extends SerializerAwareNormalizer implements Denormal
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (empty($data)) {
-            return null;
-        }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['rootSchema'] ?: null);
         }
@@ -65,6 +62,9 @@ class ExecConfigNormalizer extends SerializerAwareNormalizer implements Denormal
             }
             $object->setCmd($value);
         }
+        if (property_exists($data, 'DetachKeys')) {
+            $object->setDetachKeys($data->{'DetachKeys'});
+        }
 
         return $object;
     }
@@ -96,6 +96,9 @@ class ExecConfigNormalizer extends SerializerAwareNormalizer implements Denormal
             $value = $object->getCmd();
         }
         $data->{'Cmd'} = $value;
+        if (null !== $object->getDetachKeys()) {
+            $data->{'DetachKeys'} = $object->getDetachKeys();
+        }
 
         return $data;
     }
