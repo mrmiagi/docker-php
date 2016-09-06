@@ -40,10 +40,10 @@ class UpdateStatusNormalizer extends SerializerAwareNormalizer implements Denorm
             $object->setState($data->{'State'});
         }
         if (property_exists($data, 'StartedAt')) {
-            $object->setStartedAt(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'StartedAt'}));
+            $object->setStartedAt($data->{'StartedAt'});
         }
         if (property_exists($data, 'CompletedAt')) {
-            $object->setCompletedAt(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'CompletedAt'}));
+            $object->setCompletedAt($data->{'CompletedAt'});
         }
         if (property_exists($data, 'Message')) {
             $object->setMessage($data->{'Message'});
@@ -59,10 +59,10 @@ class UpdateStatusNormalizer extends SerializerAwareNormalizer implements Denorm
             $data->{'State'} = $object->getState();
         }
         if (null !== $object->getStartedAt()) {
-            $data->{'StartedAt'} = $object->getStartedAt()->format("Y-m-d\TH:i:sP");
+            $data->{'StartedAt'} = $object->getStartedAt();
         }
         if (null !== $object->getCompletedAt()) {
-            $data->{'CompletedAt'} = $object->getCompletedAt()->format("Y-m-d\TH:i:sP");
+            $data->{'CompletedAt'} = $object->getCompletedAt();
         }
         if (null !== $object->getMessage()) {
             $data->{'Message'} = $object->getMessage();

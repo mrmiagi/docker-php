@@ -13,11 +13,11 @@ class SwarmNetwork
      */
     protected $version;
     /**
-     * @var \DateTime
+     * @var string
      */
     protected $createdAt;
     /**
-     * @var \DateTime
+     * @var string
      */
     protected $updatedAt;
     /**
@@ -74,7 +74,7 @@ class SwarmNetwork
     }
 
     /**
-     * @return \DateTime
+     * @return string
      */
     public function getCreatedAt()
     {
@@ -82,11 +82,11 @@ class SwarmNetwork
     }
 
     /**
-     * @param \DateTime $createdAt
+     * @param string $createdAt
      *
      * @return self
      */
-    public function setCreatedAt(\DateTime $createdAt = null)
+    public function setCreatedAt($createdAt = null)
     {
         $this->createdAt = $createdAt;
 
@@ -94,7 +94,7 @@ class SwarmNetwork
     }
 
     /**
-     * @return \DateTime
+     * @return string
      */
     public function getUpdatedAt()
     {
@@ -102,11 +102,11 @@ class SwarmNetwork
     }
 
     /**
-     * @param \DateTime $updatedAt
+     * @param string $updatedAt
      *
      * @return self
      */
-    public function setUpdatedAt(\DateTime $updatedAt = null)
+    public function setUpdatedAt($updatedAt = null)
     {
         $this->updatedAt = $updatedAt;
 

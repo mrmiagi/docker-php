@@ -13,11 +13,11 @@ class Task
      */
     protected $version;
     /**
-     * @var \DateTime
+     * @var string
      */
     protected $createdAt;
     /**
-     * @var \DateTime
+     * @var string
      */
     protected $updatedAt;
     /**
@@ -102,7 +102,7 @@ class Task
     }
 
     /**
-     * @return \DateTime
+     * @return string
      */
     public function getCreatedAt()
     {
@@ -110,11 +110,11 @@ class Task
     }
 
     /**
-     * @param \DateTime $createdAt
+     * @param string $createdAt
      *
      * @return self
      */
-    public function setCreatedAt(\DateTime $createdAt = null)
+    public function setCreatedAt($createdAt = null)
     {
         $this->createdAt = $createdAt;
 
@@ -122,7 +122,7 @@ class Task
     }
 
     /**
-     * @return \DateTime
+     * @return string
      */
     public function getUpdatedAt()
     {
@@ -130,11 +130,11 @@ class Task
     }
 
     /**
-     * @param \DateTime $updatedAt
+     * @param string $updatedAt
      *
      * @return self
      */
-    public function setUpdatedAt(\DateTime $updatedAt = null)
+    public function setUpdatedAt($updatedAt = null)
     {
         $this->updatedAt = $updatedAt;
 

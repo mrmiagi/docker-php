@@ -9,11 +9,11 @@ class UpdateStatus
      */
     protected $state;
     /**
-     * @var \DateTime
+     * @var string
      */
     protected $startedAt;
     /**
-     * @var \DateTime
+     * @var string
      */
     protected $completedAt;
     /**
@@ -42,7 +42,7 @@ class UpdateStatus
     }
 
     /**
-     * @return \DateTime
+     * @return string
      */
     public function getStartedAt()
     {
@@ -50,11 +50,11 @@ class UpdateStatus
     }
 
     /**
-     * @param \DateTime $startedAt
+     * @param string $startedAt
      *
      * @return self
      */
-    public function setStartedAt(\DateTime $startedAt = null)
+    public function setStartedAt($startedAt = null)
     {
         $this->startedAt = $startedAt;
 
@@ -62,7 +62,7 @@ class UpdateStatus
     }
 
     /**
-     * @return \DateTime
+     * @return string
      */
     public function getCompletedAt()
     {
@@ -70,11 +70,11 @@ class UpdateStatus
     }
 
     /**
-     * @param \DateTime $completedAt
+     * @param string $completedAt
      *
      * @return self
      */
-    public function setCompletedAt(\DateTime $completedAt = null)
+    public function setCompletedAt($completedAt = null)
     {
         $this->completedAt = $completedAt;
 

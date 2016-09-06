@@ -1743,12 +1743,10 @@
           "$ref": "#/definitions/NodeVersion"
         },
         "CreatedAt": {
-          "type": "string",
-          "format": "date-time"
+          "type": "string"
         },
         "UpdatedAt": {
-          "type": "string",
-          "format": "date-time"
+          "type": "string"
         },
         "Spec": {
           "$ref": "#/definitions/NodeSpec"
@@ -2046,12 +2044,10 @@
           "$ref": "#/definitions/NodeVersion"
         },
         "CreatedAt": {
-          "type": "string",
-          "format": "date-time"
+          "type": "string"
         },
         "UpdatedAt": {
-          "type": "string",
-          "format": "date-time"
+          "type": "string"
         },
         "Name": {
           "type": "string"
@@ -2149,12 +2145,10 @@
           "$ref": "#/definitions/NodeVersion"
         },
         "CreatedAt": {
-          "type": "string",
-          "format": "date-time"
+          "type": "string"
         },
         "UpdatedAt": {
-          "type": "string",
-          "format": "date-time"
+          "type": "string"
         },
         "Spec": {
           "$ref": "#/definitions/SwarmNetworkSpec"
@@ -2455,12 +2449,10 @@
           "$ref": "#/definitions/NodeVersion"
         },
         "CreatedAt": {
-          "type": "string",
-          "format": "date-time"
+          "type": "string"
         },
         "UpdatedAt": {
-          "type": "string",
-          "format": "date-time"
+          "type": "string"
         },
         "Spec": {
           "$ref": "#/definitions/ServiceSpec"
@@ -2480,12 +2472,10 @@
           "type": "string"
         },
         "StartedAt": {
-          "type": "string",
-          "format": "date-time"
+          "type": "string"
         },
         "CompletedAt": {
-          "type": "string",
-          "format": "date-time"
+          "type": "string"
         },
         "Message": {
           "type": "string"

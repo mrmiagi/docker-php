@@ -43,10 +43,10 @@ class SwarmNetworkNormalizer extends SerializerAwareNormalizer implements Denorm
             $object->setVersion($this->serializer->deserialize($data->{'Version'}, 'Docker\\API\\Model\\NodeVersion', 'raw', $context));
         }
         if (property_exists($data, 'CreatedAt')) {
-            $object->setCreatedAt(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'CreatedAt'}));
+            $object->setCreatedAt($data->{'CreatedAt'});
         }
         if (property_exists($data, 'UpdatedAt')) {
-            $object->setUpdatedAt(\DateTime::createFromFormat("Y-m-d\TH:i:sP", $data->{'UpdatedAt'}));
+            $object->setUpdatedAt($data->{'UpdatedAt'});
         }
         if (property_exists($data, 'Spec')) {
             $object->setSpec($this->serializer->deserialize($data->{'Spec'}, 'Docker\\API\\Model\\SwarmNetworkSpec', 'raw', $context));
@@ -71,10 +71,10 @@ class SwarmNetworkNormalizer extends SerializerAwareNormalizer implements Denorm
             $data->{'Version'} = $this->serializer->serialize($object->getVersion(), 'raw', $context);
         }
         if (null !== $object->getCreatedAt()) {
-            $data->{'CreatedAt'} = $object->getCreatedAt()->format("Y-m-d\TH:i:sP");
+            $data->{'CreatedAt'} = $object->getCreatedAt();
         }
         if (null !== $object->getUpdatedAt()) {
-            $data->{'UpdatedAt'} = $object->getUpdatedAt()->format("Y-m-d\TH:i:sP");
+            $data->{'UpdatedAt'} = $object->getUpdatedAt();
         }
         if (null !== $object->getSpec()) {
             $data->{'Spec'} = $this->serializer->serialize($object->getSpec(), 'raw', $context);
