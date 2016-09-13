@@ -63,6 +63,9 @@ class ContainerStateNormalizer extends SerializerAwareNormalizer implements Deno
         if (property_exists($data, 'StartedAt')) {
             $object->setStartedAt($data->{'StartedAt'});
         }
+        if (property_exists($data, 'Status')) {
+            $object->setStatus($data->{'Status'});
+        }
 
         return $object;
     }
@@ -96,6 +99,9 @@ class ContainerStateNormalizer extends SerializerAwareNormalizer implements Deno
         }
         if (null !== $object->getStartedAt()) {
             $data->{'StartedAt'} = $object->getStartedAt();
+        }
+        if (null !== $object->getStatus()) {
+            $data->{'Status'} = $object->getStatus();
         }
 
         return $data;

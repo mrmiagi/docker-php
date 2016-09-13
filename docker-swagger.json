@@ -725,6 +725,9 @@
         },
         "StartedAt": {
           "type": "string"
+        },
+        "Status" : {
+          "type": "string"
         }
       }
     },

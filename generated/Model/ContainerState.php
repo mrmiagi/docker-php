@@ -40,6 +40,10 @@ class ContainerState
      * @var string
      */
     protected $startedAt;
+    /**
+     * @var string
+     */
+    protected $status;
 
     /**
      * @return string
@@ -217,6 +221,26 @@ class ContainerState
     public function setStartedAt($startedAt = null)
     {
         $this->startedAt = $startedAt;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param string $status
+     *
+     * @return self
+     */
+    public function setStatus($status = null)
+    {
+        $this->status = $status;
 
         return $this;
     }
