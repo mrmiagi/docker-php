@@ -2,8 +2,8 @@
 
 namespace Docker\API\Resource;
 
-use Joli\Jane\OpenApi\Client\QueryParam;
-use Joli\Jane\OpenApi\Client\Resource;
+use Joli\Jane\OpenApi\Runtime\Client\QueryParam;
+use Joli\Jane\OpenApi\Runtime\Client\Resource;
 
 class VolumeResource extends Resource
 {
@@ -23,12 +23,16 @@ class VolumeResource extends Resource
     {
         $queryParam = new QueryParam();
         $queryParam->setDefault('filters', null);
-        $url      = '/volumes';
-        $url      = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers  = array_merge(['Host' => 'localhost'], $queryParam->buildHeaders($parameters));
-        $body     = $queryParam->buildFormDataString($parameters);
-        $request  = $this->messageFactory->createRequest('GET', $url, $headers, $body);
-        $response = $this->httpClient->sendRequest($request);
+        $url     = '/volumes';
+        $url     = $url . ('?' . $queryParam->buildQueryString($parameters));
+        $headers = array_merge(['Host' => 'localhost'], $queryParam->buildHeaders($parameters));
+        $body    = $queryParam->buildFormDataString($parameters);
+        $request = $this->messageFactory->createRequest('GET', $url, $headers, $body);
+        $promise = $this->httpClient->sendAsyncRequest($request);
+        if (self::FETCH_PROMISE === $fetch) {
+            return $promise;
+        }
+        $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('200' == $response->getStatusCode()) {
                 return $this->serializer->deserialize((string) $response->getBody(), 'Docker\\API\\Model\\VolumeList', 'json');
@@ -55,7 +59,11 @@ class VolumeResource extends Resource
         $headers    = array_merge(['Host' => 'localhost'], $queryParam->buildHeaders($parameters));
         $body       = $this->serializer->serialize($volumeConfig, 'json');
         $request    = $this->messageFactory->createRequest('POST', $url, $headers, $body);
-        $response   = $this->httpClient->sendRequest($request);
+        $promise    = $this->httpClient->sendAsyncRequest($request);
+        if (self::FETCH_PROMISE === $fetch) {
+            return $promise;
+        }
+        $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('201' == $response->getStatusCode()) {
                 return $this->serializer->deserialize((string) $response->getBody(), 'Docker\\API\\Model\\Volume', 'json');
@@ -83,7 +91,11 @@ class VolumeResource extends Resource
         $headers    = array_merge(['Host' => 'localhost'], $queryParam->buildHeaders($parameters));
         $body       = $queryParam->buildFormDataString($parameters);
         $request    = $this->messageFactory->createRequest('DELETE', $url, $headers, $body);
-        $response   = $this->httpClient->sendRequest($request);
+        $promise    = $this->httpClient->sendAsyncRequest($request);
+        if (self::FETCH_PROMISE === $fetch) {
+            return $promise;
+        }
+        $response = $promise->wait();
 
         return $response;
     }
@@ -106,7 +118,11 @@ class VolumeResource extends Resource
         $headers    = array_merge(['Host' => 'localhost'], $queryParam->buildHeaders($parameters));
         $body       = $queryParam->buildFormDataString($parameters);
         $request    = $this->messageFactory->createRequest('GET', $url, $headers, $body);
-        $response   = $this->httpClient->sendRequest($request);
+        $promise    = $this->httpClient->sendAsyncRequest($request);
+        if (self::FETCH_PROMISE === $fetch) {
+            return $promise;
+        }
+        $response = $promise->wait();
         if (self::FETCH_OBJECT == $fetch) {
             if ('200' == $response->getStatusCode()) {
                 return $this->serializer->deserialize((string) $response->getBody(), 'Docker\\API\\Model\\Volume', 'json');

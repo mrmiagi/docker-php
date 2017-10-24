@@ -33,6 +33,10 @@ class HostConfig
      */
     protected $cpuPeriod;
     /**
+     * @var int
+     */
+    protected $cpuQuota;
+    /**
      * @var string
      */
     protected $cpusetCpus;
@@ -305,6 +309,26 @@ class HostConfig
     public function setCpuPeriod($cpuPeriod = null)
     {
         $this->cpuPeriod = $cpuPeriod;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCpuQuota()
+    {
+        return $this->cpuQuota;
+    }
+
+    /**
+     * @param int $cpuQuota
+     *
+     * @return self
+     */
+    public function setCpuQuota($cpuQuota = null)
+    {
+        $this->cpuQuota = $cpuQuota;
 
         return $this;
     }

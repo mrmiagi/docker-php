@@ -2,7 +2,6 @@
 
 namespace Docker\API\Normalizer;
 
-use Joli\Jane\Reference\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
@@ -29,16 +28,7 @@ class HostConfigNormalizer extends SerializerAwareNormalizer implements Denormal
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (empty($data)) {
-            return null;
-        }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['rootSchema'] ?: null);
-        }
         $object = new \Docker\API\Model\HostConfig();
-        if (!isset($context['rootSchema'])) {
-            $context['rootSchema'] = $object;
-        }
         if (property_exists($data, 'Binds')) {
             $value = $data->{'Binds'};
             if (is_array($data->{'Binds'})) {
@@ -92,6 +82,9 @@ class HostConfigNormalizer extends SerializerAwareNormalizer implements Denormal
         }
         if (property_exists($data, 'CpuPeriod')) {
             $object->setCpuPeriod($data->{'CpuPeriod'});
+        }
+        if (property_exists($data, 'CpuQuota')) {
+            $object->setCpuQuota($data->{'CpuQuota'});
         }
         if (property_exists($data, 'CpusetCpus')) {
             $object->setCpusetCpus($data->{'CpusetCpus'});
@@ -449,6 +442,9 @@ class HostConfigNormalizer extends SerializerAwareNormalizer implements Denormal
         }
         if (null !== $object->getCpuPeriod()) {
             $data->{'CpuPeriod'} = $object->getCpuPeriod();
+        }
+        if (null !== $object->getCpuQuota()) {
+            $data->{'CpuQuota'} = $object->getCpuQuota();
         }
         if (null !== $object->getCpusetCpus()) {
             $data->{'CpusetCpus'} = $object->getCpusetCpus();

@@ -208,6 +208,9 @@
         "CpuPeriod": {
           "type": "integer"
         },
+        "CpuQuota": {
+          "type": "integer"
+        },
         "CpusetCpus": {
           "type": "string"
         },
@@ -3784,4 +3787,3 @@
     }
   }
 }
-
