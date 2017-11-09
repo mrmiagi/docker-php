@@ -386,6 +386,9 @@ class HostConfigNormalizer extends SerializerAwareNormalizer implements Denormal
         if (property_exists($data, 'ShmSize')) {
             $object->setShmSize($data->{'ShmSize'});
         }
+        if (property_exists($data, 'Init')) {
+            $object->setInit($data->{'Init'});
+        }
 
         return $object;
     }
@@ -711,6 +714,9 @@ class HostConfigNormalizer extends SerializerAwareNormalizer implements Denormal
         }
         if (null !== $object->getShmSize()) {
             $data->{'ShmSize'} = $object->getShmSize();
+        }
+        if (null !== $object->getInit()) {
+            $data->{'Init'} = $object->getInit();
         }
 
         return $data;

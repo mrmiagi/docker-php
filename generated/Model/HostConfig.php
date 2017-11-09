@@ -172,6 +172,10 @@ class HostConfig
      * @var int
      */
     protected $shmSize;
+    /**
+     * @var bool
+     */
+    protected $init;
 
     /**
      * @return string[]|null
@@ -1009,6 +1013,26 @@ class HostConfig
     public function setShmSize($shmSize = null)
     {
         $this->shmSize = $shmSize;
+
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getInit()
+    {
+        return $this->init;
+    }
+
+    /**
+     * @param bool $init
+     *
+     * @return self
+     */
+    public function setInit($init = null)
+    {
+        $this->init = $init;
 
         return $this;
     }

@@ -366,6 +366,9 @@
         },
         "ShmSize": {
           "type": "integer"
+        },
+        "Init": {
+          "type": "boolean"
         }
       }
     },
