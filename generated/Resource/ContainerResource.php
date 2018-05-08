@@ -60,6 +60,7 @@ class ContainerResource extends Resource
      *
      *     @var string $name Assign the specified name to the container. Must match /?[a-zA-Z0-9_-]+.
      *     @var string $Content-Type Content Type of input
+     *     @var string $X-Registry-Auth Registry Authentication Token for Swarm Container Create
      * }
      *
      * @param string $fetch Fetch mode (object or response)
@@ -72,6 +73,8 @@ class ContainerResource extends Resource
         $queryParam->setDefault('name', null);
         $queryParam->setDefault('Content-Type', 'application/json');
         $queryParam->setHeaderParameters(['Content-Type']);
+        $queryParam->setDefault('X-Registry-Auth', null);
+        $queryParam->setHeaderParameters(['X-Registry-Auth']);
         $url     = '/containers/create';
         $url     = $url . ('?' . $queryParam->buildQueryString($parameters));
         $headers = array_merge(['Host' => 'localhost'], $queryParam->buildHeaders($parameters));

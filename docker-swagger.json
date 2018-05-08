@@ -1694,6 +1694,12 @@
           "type": "string",
           "default": "application/json",
           "description": "Content Type of input"
+        },{
+          "name": "X-Registry-Auth",
+          "required": false,
+          "in": "header",
+          "type": "string",
+          "description": "Registry Authentication Token for Swarm Container Create"
         }],
         "responses": {
           "201": {
